@@ -3,5 +3,35 @@ extends layout
 block content
   .panel(class='panel-default')
     .panel-heading
-        h3.panel-title Panel title
-      .panel-body Panel body
+        h3.panel-title Sign up
+      .panel-body
+        .alert.alert-danger
+          button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
+          strong Error!
+          span= error
+
+        form(action='/signup', method='post', role='form', style='width: 250px;margin: auto;')
+          .form-group
+            .row
+              label Email
+                input.form-control(type='text', name='email')
+            .row
+              label Name
+                input.form-control(type='text', name='name')
+            .row
+              label Last Name
+                input.form-control(type='text', name='lastName')
+            .row
+              label Gender
+                select.form-control(name='gender')
+                  option(value='male') Male
+                  option(value='female') Female
+            .row
+              label Password
+                input.form-control(type='password', name='password1')
+            .row
+              label Replay Password
+                input.form-control(type='password', name='password2')
+            .row
+              button.btn.btn-primary(type='submit') Submit
+
