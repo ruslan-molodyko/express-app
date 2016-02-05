@@ -1,7 +1,6 @@
 /**
  * Created by admin on 06.02.2016.
  */
-
 var i18n = require('i18n-2');
 
 /**
@@ -12,12 +11,18 @@ var i18n = require('i18n-2');
  */
 module.exports = function(app, config, routes) {
 
-    i18n.expressBind(app, config.i18n);
-
+    /**
+     * Get prams with locales
+     * @param locales
+     * @returns {*|Array.<T>|string}
+     */
     var getParamRoutes = function(locales) {
         return locales.map(function(val) { return '/' + val; }).concat('/');
     };
 
+    /**
+     * Set locale
+     */
     app.use(
         getParamRoutes(config.i18n.locales),
         function(req, res, next) {
@@ -32,4 +37,3 @@ module.exports = function(app, config, routes) {
         routes
     );
 };
-

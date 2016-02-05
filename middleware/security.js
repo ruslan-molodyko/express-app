@@ -1,9 +1,10 @@
 /**
  * Created by admin on 06.02.2016.
  */
-var passport = require('passport'),
+var path = require('path'),
+    passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    User = require('./models/user');
+    User = require(path.join(__dirname, '..', 'models/user'));
 
 /**
  * Manage the login and logout logic

@@ -7,9 +7,7 @@ var express = require('express'),
     field = form.field,
     router = express.Router();
 
-router.all('/signup', form(
-    field('email').trim().isEmail()
-), function(req, res, next) {
+router.all('/signup', function(req, res, next) {
 
     //var form = req.body,
         //user = User.create(form),
@@ -20,7 +18,7 @@ router.all('/signup', form(
     //        console.log(err, model);
     //    });
     //}
-    res.render('index', {title: 'Express', error: req.flash('error')});
+    res.render('index', {title: 'Express', error: ''});
 });
 
 router.get('/', function(req, res, next) {

@@ -1,7 +1,8 @@
 /**
  * Created by admin on 06.02.2016.
  */
-var path = require('path'),
+var express = require('express'),
+    path = require('path'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     mongoose = require('mongoose'),
@@ -9,6 +10,7 @@ var path = require('path'),
     bodyParser = require('body-parser'),
     flash = require('connect-flash'),
     passport = require('passport'),
+    i18n = require('i18n-2'),
     session = require('express-session');
 
 /**
@@ -21,6 +23,9 @@ module.exports = function(app, config, baseDir) {
 
     // Init mongoose connection
     mongoose.connect(config.db.connection);
+
+    // Init i18n
+    i18n.expressBind(app, config.i18n);
 
     // View engine setup
     app.set('views', path.join(baseDir, 'views'));
@@ -40,38 +45,4 @@ module.exports = function(app, config, baseDir) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    /**
-     * Catch 404 and forward to error handler
-     */
-    app.use(function(req, res, next) {
-        var err = new Error('Not Found');
-        err.status = 404;
-        next(err);
-    });
-
-    // Error handlers
-
-    /**
-     * Development error handler will print stacktrace
-     */
-    if (app.get('env') === 'development') {
-        app.use(function(err, req, res, next) {
-            res.status(err.status || 500);
-            res.render('error', {
-                message: err.message,
-                error: err
-            });
-        });
-    }
-
-    /**
-     * Production error handler no stacktraces leaked to user
-     */
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: {}
-        });
-    });
 };
