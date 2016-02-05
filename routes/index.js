@@ -2,7 +2,7 @@ var express = require('express'),
     User = require('../models/user'),
     router = express.Router();
 
-router.post('/signup', function(req, res, next) {
+router.all('/signup', function(req, res, next) {
     var form = req.body,
         user = User.create(form),
         error = user.validateSync();

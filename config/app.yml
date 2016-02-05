@@ -1,0 +1,10 @@
+app:
+  viewEngine: jade
+db:
+  connection: 'mongodb://localhost/kitty'
+i18n:
+  locales: [en, de]
+  defaultLocale: en
+  cookieName: locale
+  extension: .json
+
