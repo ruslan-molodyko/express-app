@@ -19,3 +19,8 @@ ___Translation___
 ___Form___
 
 1. https://github.com/dandean/express-form
+
+__Login___
+
+1. https://scotch.io/tutorials/easy-node-authentication-setup-and-local
+2. http://passportjs.org/docs
