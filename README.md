@@ -15,3 +15,7 @@ ___Mongo___
 ___Translation___
 
 1. https://truongtx.me/2014/03/20/nodejs-internationalization-in-express-with-i18n-i18n-2/
+
+___Form___
+
+1. https://github.com/dandean/express-form
