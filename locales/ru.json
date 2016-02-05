@@ -1,0 +1,16 @@
+{
+	"app.name": "Express приложение",
+	"menu.home": "Главная",
+	"menu.users": "Пользователи",
+	"signup.block.title": "Регестрация",
+	"error": "Ошибка",
+	"email": "E-mail",
+	"name": "Имя",
+	"last-name": "Фамилия",
+	"gender": "Пол",
+	"male": "Мужской",
+	"female": "Женский",
+	"password": "Пароль",
+	"password-repeat": "Профиль еще раз",
+	"submit": "Отправить"
+}

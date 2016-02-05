@@ -19,6 +19,8 @@ module.exports = {
         var newLocale;
         if (newLocale = req.baseUrl.substring(1)) {
             req.i18n.setLocale(newLocale);
+        } else {
+            req.i18n.setLocale(req.i18n.defaultLocale);
         }
         next();
     }

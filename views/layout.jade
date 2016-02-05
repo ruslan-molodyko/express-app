@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    meta(charset='utf-8')
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
@@ -8,11 +9,11 @@ html
   body
     .container
       nav.navbar.navbar-default.navbar-static-top(role='navigation')
-        a.navbar-brand(href='#') App
+        a.navbar-brand(href='#') #{__('app.name')}
         ul.nav.navbar-nav
           li.active
-            a(href='#') Home
+            a(href='#') #{__('menu.home')}
           li
-            a(href='/users') Users
+            a(href='/users') #{__('menu.users')}
 
       block content

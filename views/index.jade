@@ -3,35 +3,35 @@ extends layout
 block content
   .panel(class='panel-default')
     .panel-heading
-        h3.panel-title #{__('hhh')}
+        h3.panel-title #{__('signup.block.title')}
       .panel-body
         .alert.alert-danger
           button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
-          strong Error!
+          strong #{__('error')}
           span= error
 
         form(action='/signup', method='post', role='form', style='width: 250px;margin: auto;')
           .form-group
             .row
-              label Email
+              label #{__('email')}
                 input.form-control(type='text', name='email')
             .row
-              label Name
+              label #{__('name')}
                 input.form-control(type='text', name='name')
             .row
-              label Last Name
+              label #{__('last-name')}
                 input.form-control(type='text', name='lastName')
             .row
-              label Gender
+              label #{__('gender')}
                 select.form-control(name='gender')
-                  option(value='male') Male
-                  option(value='female') Female
+                  option(value='male') #{__('male')}
+                  option(value='female') #{__('female')}
             .row
-              label Password
+              label #{__('password')}
                 input.form-control(type='password', name='password1')
             .row
-              label Replay Password
+              label #{__('password-repeat')}
                 input.form-control(type='password', name='password2')
             .row
-              button.btn.btn-primary(type='submit') Submit
+              button.btn.btn-primary(type='submit') #{__('submit')}
 

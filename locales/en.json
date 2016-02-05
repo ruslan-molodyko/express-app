@@ -1,3 +1,16 @@
 {
-	"hhh": "hhhen"
+	"app.name": "Express app",
+	"menu.home": "Home",
+	"menu.users": "Users",
+	"signup.block.title": "Sign up",
+	"error": "Error",
+	"email": "Email",
+	"name": "Name",
+	"last-name": "Last name",
+	"gender": "Gender",
+	"male": "Male",
+	"female": "Female",
+	"password": "Password",
+	"password-repeat": "Repeat password",
+	"submit": "Submit"
 }
