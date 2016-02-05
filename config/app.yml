@@ -1,5 +1,6 @@
 app:
   viewEngine: jade
+  secretKey: there_is_the_secret_key
 db:
   connection: 'mongodb://localhost/kitty'
 i18n:
