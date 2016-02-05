@@ -11,3 +11,7 @@ __Test__
 ___Mongo___
 
 1. http://jsman.ru/mongo-book/Glava-4-Modelirovanie-dannyh.html
+
+___Translation___
+
+1. https://truongtx.me/2014/03/20/nodejs-internationalization-in-express-with-i18n-i18n-2/
