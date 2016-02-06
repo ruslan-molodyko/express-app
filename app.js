@@ -5,7 +5,7 @@ var express = require('express'),
     app = express(),
     path = require('path'),
     YAML = require('yamljs'),
-    routes = require(path.join(__dirname, 'routes/index')),
+    routes = require(path.join(__dirname, 'routes/security')),
     sc = require(path.join(__dirname, 'lib/short-cuts')),
     config = YAML.load(path.join(__dirname, 'config/app.yml'));
 
