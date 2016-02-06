@@ -1,0 +1,25 @@
+//
+   Created by admin on 06.02.2016.
+
+mixin form_error(field, attr)
+  - if (field.error != null)
+    .error&attributes(attr ? attr : {})= __(field.error)
+mixin form_label(field, attr)
+  label&attributes(attr ? attr : {})= __(field.label)
+    block
+mixin form_widget(field, attr)
+  input.form-control&attributes(Object.assign(attr ? attr : {}, field.widget))
+mixin form_row(field, attr)
+  .row&attributes(attr ? attr : {})
+    +form_error(field)
+    +form_label(field)
+      +form_widget(field)
+
+mixin form(form)
+  form&attributes(form.attr ? form.attr : {})
+    .form-group
+      block
+
+mixin form_button(name, attr)
+  .row
+    button(type='submit', class='btn btn-primary')&attributes(attr ? attr : {})= __(name)

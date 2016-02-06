@@ -4,8 +4,12 @@
 var express = require('express'),
     User = require('../models/user'),
     form = require("express-form"),
+    formSignUp = require('../lib/form-builder'),
     field = form.field,
-    router = express.Router();
+    router = express.Router(),
+    YAML = require('yamljs'),
+    configForm = YAML.load('./config/forms/security.yml')
+    ;
 
 router.post('/signup', function(req, res, next) {
     res.send(res.body);
@@ -13,7 +17,7 @@ router.post('/signup', function(req, res, next) {
 
 router.get('/signup', function(req, res, next) {
 
-    res.render('signup', {title: 'Express'});
+    res.render('signup', {title: 'Express', form: configForm.signup});
 });
 
 module.exports = router;

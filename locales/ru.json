@@ -14,5 +14,7 @@
 	"password-repeat": "Профиль еще раз",
 	"submit": "Отправить",
 	"page.title": "page.title",
-	"page.title.signup": "page.title.signup"
+	"page.title.signup": "page.title.signup",
+	"page.title.main": "page.title.main",
+	"label": "label"
 }

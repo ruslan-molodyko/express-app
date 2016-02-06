@@ -13,28 +13,13 @@ block content
           strong #{__('error')}
           span= error
 
-        form(action='/login', method='post', role='form', style='width: 250px;margin: auto;')
-          .form-group
-            .row
-              label #{__('email')}
-                input.form-control(type='text', name='email')
-            .row
-              label #{__('name')}
-                input.form-control(type='text', name='name')
-            .row
-              label #{__('last-name')}
-                input.form-control(type='text', name='lastName')
-            .row
-              label #{__('gender')}
-                select.form-control(name='gender')
-                  option(value='male') #{__('male')}
-                  option(value='female') #{__('female')}
-            .row
-              label #{__('password')}
-                input.form-control(type='password', name='password1')
-            .row
-              label #{__('password-repeat')}
-                input.form-control(type='password', name='password2')
-            .row
-              button.btn.btn-primary(type='submit') #{__('submit')}
-
+        +form(form)
+          +form_row(form.fields.email)
+          //+form_row(form.fields.name)
+          .row
+            +form_label(form.fields.name)
+              +form_widget(form.fields.name)
+          +form_row(form.fields.lastName)
+          +form_row(form.fields.password1)
+          +form_row(form.fields.password2)
+          +form_button('submit')

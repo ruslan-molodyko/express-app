@@ -1,0 +1,16 @@
+//
+   Created by admin on 06.02.2016
+
+.sdf= type
+
+case type
+  when 'password'
+  when 'text'
+    - if (mode == 'widget')
+      .row
+        - if (mode == 'error' || mode == 'widget')
+          .error= error
+        - if (mode == 'label' || mode == 'widget')
+          .lable= label
+        - if (mode == 'input' || mode == 'widget')
+          input.form-control&attributes(attrs)

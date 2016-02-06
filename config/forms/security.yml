@@ -1,0 +1,39 @@
+signup:
+  attr:
+    action: /signup
+    class: .my-form
+    method: post
+    style:
+      width: 250px
+      margin: auto
+  fields:
+    email:
+      label: email
+      widget:
+        type: text
+        name: email
+    name:
+      label: name
+      widget:
+        type: text
+        name: name
+    lastName:
+      label: last-name
+      widget:
+        type: text
+        name: lastName
+#    gender:
+#      type: select
+#      options:
+#        - male
+#        - female
+    password1:
+      label: password
+      widget:
+        type: password
+        name: password1
+    password2:
+      label: password-repeat
+      widget:
+        type: password
+        name: password1

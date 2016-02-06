@@ -12,5 +12,6 @@
 	"female": "Female",
 	"password": "Password",
 	"password-repeat": "Repeat password",
-	"submit": "Submit"
+	"submit": "Submit",
+	"page.title.signup": "page.title.signup"
 }
