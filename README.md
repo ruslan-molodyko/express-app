@@ -29,3 +29,4 @@ ___Login___
 ----
 
 1. http://jade-lang.com/
+2. http://jsman.ru/jade/
