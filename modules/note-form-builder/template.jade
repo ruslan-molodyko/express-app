@@ -1,14 +1,34 @@
 //
-   Created by admin on 06.02.2016
+   Created by admin on 06.02.2016.
 
-case type
-  when 'password'
-  when 'text'
-    - if (mode == 'widget')
-      .row
-        - if (mode == 'error' || mode == 'widget')
-          .error= error
-        - if (mode == 'label' || mode == 'widget')
-          .lable= label
-        - if (mode == 'input' || mode == 'widget')
-          input.form-control&attributes(attrs)
+mixin form_error(field, attr)
+  - if (field.error != null)
+    .error&attributes(attr ? attr : {})= __(field.error)
+
+mixin form_label(field, attr)
+  label&attributes(attr ? attr : {})= __(field.label)
+  block
+
+mixin form_widget(field, attr)
+  input.form-control&attributes(Object.assign(field.attr, attr))
+
+mixin form_row(field, attr)
+  .row&attributes(attr ? attr : {})
+    +form_error(field)
+    +form_label(field)
+      +form_widget(field)
+
+mixin form_open(form, attr)
+  form&attributes(Object.assign(form._form_.attr, attr))
+    .form-group
+      block
+
+mixin form(form, attr)
+  +form_open(form)
+    - each field, key in form
+      - if (key != '_form_')
+        +form_row(field)
+
+mixin form_button(field, attr)
+  .row
+    button(type='submit', class='btn btn-primary')&attributes(Object.assign(field.attr, attr))= __(field.name)
