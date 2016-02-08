@@ -107,6 +107,11 @@ var Form = ABone.create(function() {
             // Skip properties for fields
             if (key == 'fields') {
 
+                // Covert simple array to right form of object
+                if (Array.isArray(value)) {
+                    this.form.fields = this._arrayToObject(this.form.fields);
+                }
+
                 // Iterate all fields
                 for (var fieldKey in this.form.fields) {
                     var fieldValue = this.form.fields[fieldKey];
@@ -172,6 +177,33 @@ var Form = ABone.create(function() {
     this.getForm = function() {
 
         return this.data;
+    };
+
+    /**
+     * Convert array to empty object with values as keys
+     * @param array
+     * @returns {*}
+     * @private
+     */
+    this._arrayToObject = function(array) {
+        var result = {};
+
+        // Check if right argument
+        if (!Array.isArray(array)) {
+            throw new Error('Argument is not an array');
+        }
+
+        // Iteraet all elements in array and set it as key of object
+        array.forEach(function(val) {
+
+            // If value can not to be as a key in object then throw error
+            if (typeof val !== 'string') {
+                throw new Error('Value is not a string');
+            }
+            result[val] = {};
+        });
+
+        return result;
     }
 });
 

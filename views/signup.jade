@@ -14,12 +14,12 @@ block content
           span= error
 
         +form(form)
-          +form_row(form.fields.email)
+          +form_row(form.email)
           //+form_row(form.fields.name)
           .row
-            +form_label(form.fields.name)
-              +form_widget(form.fields.name)
-          +form_row(form.fields.lastName)
-          +form_row(form.fields.password1)
-          +form_row(form.fields.password2)
-          +form_button('submit')
+            +form_label(form.name)
+              +form_widget(form.name)
+          +form_row(form.lastName)
+          +form_row(form.password1)
+          +form_row(form.password2)
+          //+form_button(form.)

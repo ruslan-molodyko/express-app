@@ -21,27 +21,32 @@ signup:
       margin: auto
   fields:
     email:
-      label: email
-      type: text
-      name: email
     name:
-      label: name
-      type: text
-      name: name
     lastName:
-      label: last-name
-      type: text
-      name: lastName
+    password1:
+    password2:
+#    email:
+#      label: email
+#      type: text
+#      name: email
+#    name:
+#      label: name
+#      type: text
+#      name: name
+#    lastName:
+#      label: last-name
+#      type: text
+#      name: lastName
 #    gender:
 #      type: select
 #      options:
 #        - male
 #        - female
-    password1:
-      label: password
-      type: password
-      name: password1
-    password2:
-      label: password-repeat
-      type: password
-      name: password1
+#    password1:
+#      label: password
+#      type: password
+#      name: password1
+#    password2:
+#      label: password-repeat
+#      type: password
+#      name: password1

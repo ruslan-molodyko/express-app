@@ -17,7 +17,5 @@ sc.requireMiddleware('security')(app);
 sc.requireMiddleware('i18n')(app, config, routes);
 sc.requireMiddleware('e404')(app);
 
-new require('./modules/note-form-builder')();
-
 module.exports = app;
 
