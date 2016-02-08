@@ -14,5 +14,8 @@
 	"password-repeat": "Repeat password",
 	"submit": "Submit",
 	"page.title.signup": "page.title.signup",
-	"page.title.main": "page.title.main"
+	"page.title.main": "page.title.main",
+	"lastName": "lastName",
+	"password1": "password1",
+	"password2": "password2"
 }

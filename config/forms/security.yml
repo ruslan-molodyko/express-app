@@ -12,19 +12,12 @@
 # attr - some attributes of field
 
 signup:
-  action: /signup
-  method: post
-  attr:
-    class: .my-form
-    style:
-      width: 250px
-      margin: auto
   fields:
-    email:
-    name:
-    lastName:
-    password1:
-    password2:
+    - email
+    - name
+    - lastName
+    - password1
+    - password2
 #    email:
 #      label: email
 #      type: text

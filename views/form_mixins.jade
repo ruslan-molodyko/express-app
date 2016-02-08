@@ -15,10 +15,16 @@ mixin form_row(field, attr)
     +form_label(field)
       +form_widget(field)
 
-mixin form(form, attr)
+mixin form_open(form, attr)
   form&attributes(Object.assign(form._form_.attr, attr))
     .form-group
       block
+
+mixin form(form, attr)
+  +form_open(form)
+    - each field, key in form
+      - if (key != '_form_')
+        +form_row(field)
 
 mixin form_button(field, attr)
   .row
