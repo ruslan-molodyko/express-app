@@ -2,18 +2,34 @@
  * Created by admin on 06.02.2016.
  */
 
-var Abone = require('abone'),
-    jade = require('jade')
+var ABone = require('abone')
     ;
 
-var Form = Abone.create(function() {
-    this.constructor = function() {
-        var html = jade.compileFile(__dirname + '/template.jade');
-        console.log(html({type: 'text', mode: 'widget', label: 'label-label', name: 'email', attrs: {
-            attr1: 'attr1',
-            attr2: 'attr2',
-            class: 'sdfsdf'
-        }}));
+/**
+ * Create form
+ */
+var Form = ABone.create(function() {
+
+    /**
+     * Init class
+     * @param form
+     */
+    this.constructor = function(form) {
+        this.form = {};
+    };
+
+    /**
+     * Init default values of form and form fields
+     */
+    this.initDefault = function() {
+
+    };
+
+    /**
+     * Convert config to data
+     */
+    this.convert = function() {
+
     };
 });
 

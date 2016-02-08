@@ -13,5 +13,6 @@
 	"password": "Password",
 	"password-repeat": "Repeat password",
 	"submit": "Submit",
-	"page.title.signup": "page.title.signup"
+	"page.title.signup": "page.title.signup",
+	"page.title.main": "page.title.main"
 }

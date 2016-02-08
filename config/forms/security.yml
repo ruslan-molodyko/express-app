@@ -1,27 +1,37 @@
+# That form has some native params which is not the attributes
+
+# For form its:
+# action - action to handle form
+# method - method like post or get
+# attr - some attributes of form
+
+# For fields its:
+# type - there is type of the field
+# label - it is label of field
+# name - name attribute of field
+# attr - some attributes of field
+
 signup:
+  action: /signup
+  method: post
   attr:
-    action: /signup
     class: .my-form
-    method: post
     style:
       width: 250px
       margin: auto
   fields:
     email:
       label: email
-      widget:
-        type: text
-        name: email
+      type: text
+      name: email
     name:
       label: name
-      widget:
-        type: text
-        name: name
+      type: text
+      name: name
     lastName:
       label: last-name
-      widget:
-        type: text
-        name: lastName
+      type: text
+      name: lastName
 #    gender:
 #      type: select
 #      options:
@@ -29,11 +39,9 @@ signup:
 #        - female
     password1:
       label: password
-      widget:
-        type: password
-        name: password1
+      type: password
+      name: password1
     password2:
       label: password-repeat
-      widget:
-        type: password
-        name: password1
+      type: password
+      name: password1
