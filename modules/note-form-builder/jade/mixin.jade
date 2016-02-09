@@ -6,7 +6,8 @@ mixin form_error(field, attr)
     .error&attributes(attr ? attr : {})= __(field.error)
 
 mixin form_label(field, attr)
-  label&attributes(attr ? attr : {})= __(field.label)
+  - if (field.type !== 'button')
+      label&attributes(attr ? attr : {})= __(field.label)
     block
 
 mixin form_widget(field, attr)
@@ -20,6 +21,8 @@ mixin form_widget(field, attr)
           option(value=Object.keys(value)[0])= __(value[Object.keys(value)[0]])
         - else
           option(value=value)= __(value)
+  - else if (field.type == 'button')
+    button(type='submit', class='btn btn-primary')&attributes(Object.assign(field.attr, attr))= __(field.attr.name)
   - else
     input.form-control&attributes(Object.assign(field.attr, attr))
 
