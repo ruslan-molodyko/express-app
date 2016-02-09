@@ -183,11 +183,20 @@ describe('Form#_arrayToObject', function() {
             form._arrayToObject()
         }).to.throw(Error);
     });
-    it('Item as not string', function() {
+    it('Item as not string with out handler', function() {
         var form = new Form(config);
         expect(function() {
             form._arrayToObject([{'key': 'value'}, 'sdf'])
         }).to.throw(Error);
+    });
+    it('Item as not string with handler', function() {
+        var form = new Form(config);
+        expect(form._arrayToObject([{'key': 'value'}, 'one'], function(result, val) {
+                result['key'] = val['key'] + '-suffix';
+        })).to.eql({
+            'key': 'value-suffix',
+            'one': {}
+        });
     });
     it('Right result', function() {
         var form = new Form(config);

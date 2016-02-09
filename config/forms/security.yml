@@ -11,6 +11,13 @@
 # name - name attribute of field
 # attr - some attributes of field
 
+# For select type you should specify type: select and options, for example
+#gender:
+#  type: select
+#    options:
+#      - value: key
+#      - valueAndValue
+
 signup:
   fields:
     - email
