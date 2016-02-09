@@ -2,7 +2,7 @@
  * Created by admin on 03.02.2016.
  */
 var path = require('path'),
-    Form = require(path.join(__dirname, '..', 'index')),
+    Form = require(path.join(__dirname, '..', 'index')).Form,
     expect = require("chai").expect;
     config = {
         action: '/login',

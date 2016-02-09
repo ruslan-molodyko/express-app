@@ -11,7 +11,8 @@ var express = require('express'),
     flash = require('connect-flash'),
     passport = require('passport'),
     i18n = require('i18n-2'),
-    session = require('express-session');
+    session = require('express-session'),
+    jadeFormBuilder = require(path.join(__dirname, '..' ,'modules/note-form-builder'));
 
 /**
  * Main initialization of app

@@ -5,7 +5,7 @@ var express = require('express'),
     User = require('../models/user'),
     form = require("express-form"),
     formSignUp = require('../lib/form-builder'),
-    Form = require('../modules/note-form-builder'),
+    Form = require('../modules/note-form-builder').Form,
     field = form.field,
     router = express.Router(),
     YAML = require('yamljs'),
@@ -17,8 +17,6 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.get('/signup', function(req, res, next) {
-
-    console.log(configForm);
 
     res.render('signup', {title: 'Express', form: (new Form(configForm.signup)).getForm()});
 });
