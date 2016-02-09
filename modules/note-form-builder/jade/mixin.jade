@@ -7,10 +7,22 @@ mixin form_error(field, attr)
 
 mixin form_label(field, attr)
   label&attributes(attr ? attr : {})= __(field.label)
-  block
+    block
 
 mixin form_widget(field, attr)
-  input.form-control&attributes(Object.assign(field.attr, attr))
+  - if (field.type == 'select')
+    select.form-control&attributes(Object.assign(field.attr, attr))
+      //- Iterate options
+      - each value, key in field.options
+        //- Handle object types
+        - if (typeof value === 'object')
+          //- Get first value from object
+          option(value=Object.keys(value)[0])= __(value[Object.keys(value)[0]])
+        - else
+          option(value=value)= __(value)
+  - else
+    input.form-control&attributes(Object.assign(field.attr, attr))
+
 
 mixin form_row(field, attr)
   .row&attributes(attr ? attr : {})

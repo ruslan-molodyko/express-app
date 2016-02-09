@@ -15,6 +15,11 @@ signup:
   fields:
     - email
     - name
+    - gender:
+        type: select
+        options:
+          - one: hello
+          - second
     - lastName
     - password1
     - password2
