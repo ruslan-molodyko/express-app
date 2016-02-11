@@ -26,7 +26,6 @@ ___Login___
 1. https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 2. http://passportjs.org/docs
 
-----
-
 1. http://jade-lang.com/
 2. http://jsman.ru/jade/
+3. https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
