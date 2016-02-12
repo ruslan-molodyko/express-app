@@ -1,0 +1,9 @@
+case1:
+  login:
+    fields:
+      name:
+        name: login-form-name
+        type: text
+        attr:
+          style:
+            margin: 0

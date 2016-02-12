@@ -1,0 +1,17 @@
+case1:
+  login:
+    name: login-form-name
+    fieldNameAsArray: true
+    attr:
+      style:
+        margin: 0
+
+case2:
+  login:
+    fieldNameAsArray: true
+    attr:
+      style:
+        margin: 0
+
+case3:
+  login: {}
