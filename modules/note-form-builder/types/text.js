@@ -42,7 +42,7 @@ module.exports = ABone.create(function() {
         this.result.attr.name = this.result.attr.name || this.result.name;
 
         // Wrap name as array by form name
-        if (this.form.fieldNameAsArray === true) {
+        if (this.form.data.fieldNameAsArray === true) {
             this.result.attr.name = this.formName + '[' + this.result.attr.name + ']';
         }
     };

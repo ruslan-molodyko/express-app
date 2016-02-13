@@ -9,16 +9,64 @@ var path = require('path'),
     config = YAML.load(path.join(__dirname, 'test-data', 'text-type.yml'));
 
 describe('Type#text', function() {
-    it('Case 1', function() {
-        var textType = new TextType(new Form(config.case1.login, 'login'), 'name');
-        expect(textType.getData()).to.be.eql({
+    it('Case 1, usual case', function() {
+        var textType = new Form(config.case1.login, 'login');
+        expect(textType.fields.name.getData()).to.be.eql({
             "attr": {
-                "name": "name",
+                "name": "login-form-name",
+                "type": "text",
+                "style": {
+                    margin: 0
+                }
+            },
+            "label": "name",
+            "name": "login-form-name",
+            "type": "text"
+        });
+    });
+    it('Case 2, test fieldNameAsArray property', function() {
+        var textType = new Form(config.case2.login, 'login');
+        expect(textType.fields.name.getData()).to.be.eql({
+            "attr": {
+                "name": "login[login-form-name]",
+                "type": "text",
+                "style": {
+                    margin: 0
+                }
+            },
+            "label": "name",
+            "name": "login-form-name",
+            "type": "text"
+        });
+    });
+    it('Case 3, test array notation of fields', function() {
+        var textType = new Form(config.case3.login, 'login');
+        expect(textType.fields.name.getData()).to.be.eql({
+            "attr": {
+                "name": "login[name]",
                 "type": "text"
             },
             "label": "name",
             "name": "name",
             "type": "text"
         });
+    });
+    it('Case 4, test array/object(mixed) notation of fields', function() {
+        var textType = new Form(config.case4.login, 'login');
+        expect(textType.fields.name.getData()).to.be.eql({
+            "attr": {
+                "name": "login[name]",
+                "type": "text"
+            },
+            "label": "custom-label",
+            "name": "name",
+            "type": "text"
+        });
+    });
+    it('Case 5, test array/object(mixed) notation of fields name property not defined', function() {
+        expect(function(){
+            var textType = new Form(config.case5.login, 'login');
+            textType.fields.name.getData()
+        }).to.throws(Error);
     });
 });

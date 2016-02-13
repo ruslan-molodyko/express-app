@@ -7,3 +7,44 @@ case1:
         attr:
           style:
             margin: 0
+      someField:
+        name: someName
+        type: text
+
+case2:
+  login:
+    fieldNameAsArray: true
+    fields:
+      name:
+        name: login-form-name
+        type: text
+        attr:
+          style:
+            margin: 0
+      someField:
+        name: someName
+        type: text
+
+case3:
+  login:
+    fieldNameAsArray: true
+    fields:
+      - name
+      - someField
+
+case4:
+  login:
+    fieldNameAsArray: true
+    fields:
+      -
+          name: name
+          label: custom-label
+      - someField
+
+case5:
+  login:
+    fieldNameAsArray: true
+    fields:
+      -
+          label: custom-label
+      - someField

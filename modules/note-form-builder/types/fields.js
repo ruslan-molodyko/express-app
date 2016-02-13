@@ -14,7 +14,7 @@ module.exports = ABone.create(function() {
      * Init class
      * @param form Form in converted form
      */
-    this.constructor = function(form, fieldName, sdf) {
+    this.constructor = function(form, fieldName) {
 
         // Check form data
         if (form == null) {
