@@ -29,3 +29,15 @@ ___Login___
 1. http://jade-lang.com/
 2. http://jsman.ru/jade/
 3. https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
+___Test coverage___
+1. I have used [mocha.js](http://mochajs.org/)
+2. For coverage [blanket.js](http://blanketjs.org/)
+3. Set external tool in webstorm
+4. Use it as below in my coverage.bat
+
+```
+_mocha C:\node\app\modules\note-form-builder\test --require blanket --reporter html-cov > public/coverage.html 
+```
+
+* TODO move it to gulp task

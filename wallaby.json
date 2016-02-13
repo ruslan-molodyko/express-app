@@ -1,0 +1,13 @@
+{
+  "files": [
+    "modules/note-form-builder/**/*.js",
+    "!modules/note-form-builder/test/*.js"
+  ],
+
+  "tests": [
+    { "pattern": "modules/note-form-builder/test/*.js", "load": false}
+  ],
+  "env": {
+    "type": "node"
+  }
+}

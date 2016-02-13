@@ -1,6 +1,9 @@
 /**
  * Created by admin on 11.02.2016.
  */
+require("blanket")({ pattern: function (filename) {
+    return !/node_modules/.test(filename);
+} });
 var path = require('path'),
     FormType = require(path.join(__dirname, '..', 'types', 'form')),
     expect = require("chai").expect,
