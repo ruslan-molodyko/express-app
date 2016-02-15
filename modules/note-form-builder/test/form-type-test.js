@@ -41,13 +41,12 @@ describe('Type#form', function() {
     it('Form data is null', function() {
         expect(function() {
             var formType = new FormType(null, 'login');
-            formType.getData()
+
         }).to.be.throws(Error);
     });
     it('Form name is null', function() {
         expect(function() {
             var formType = new FormType({fields: {}}, null);
-            formType.getData()
         }).to.be.throws(Error);
     });
 });

@@ -17,12 +17,18 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "blanket": "^1.2.1"
+    "blanket": "^1.2.1",
+    "mocha-multi": "^0.7.2"
   },
   "config": {
     "blanket": {
-      "pattern": [""],
-      "data-cover-never": ["node_modules", "tests"]
+      "pattern": [
+        ""
+      ],
+      "data-cover-never": [
+        "node_modules",
+        "tests"
+      ]
     }
   }
 }
