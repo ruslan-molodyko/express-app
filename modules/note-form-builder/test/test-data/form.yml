@@ -1,0 +1,15 @@
+case1:
+  signup:
+    fieldNameAsArray: false
+    attr:
+      style:
+        margin: auto
+        width: 200px
+    fields:
+      - email
+      - name
+      - lastName
+      - password1
+      - password2
+      - submit:
+          type: text

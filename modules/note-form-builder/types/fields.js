@@ -77,6 +77,13 @@ module.exports = ABone.create(function() {
      */
     this.getData = function() {
         return this.result;
-    }
+    };
 
+    /**
+     * Get field name
+     * @returns {*}
+     */
+    this.getName = function() {
+        return this.fieldName;
+    }
 });

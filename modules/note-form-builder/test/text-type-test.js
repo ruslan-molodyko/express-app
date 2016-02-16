@@ -69,6 +69,7 @@ describe('Type#text', function() {
     it('Case 5, test array/object(mixed) notation of fields name property not defined', function() {
         expect(function(){
             var textType = new Form(config.case5.login, 'login');
+            console.log(textType.fields.name.getData());
         }).to.throws(Error);
     });
 });
