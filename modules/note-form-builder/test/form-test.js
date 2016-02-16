@@ -24,7 +24,7 @@ describe('Form#initialization', function() {
     });
     it('Case 1, usual form', function() {
         var data = new Form(config.case1.signup, 'login');
-        expect(data.getData()).to.be.eql({
+        expect(data.getForm()).to.be.eql({
             "attr": {
                 "style": {
                     "margin": "auto",
@@ -33,7 +33,7 @@ describe('Form#initialization', function() {
             },
             "fieldNameAsArray": false,
             "name": 'login',
-            "fields": {
+            "field": {
                 "email": {
                     "attr": {
                         "name": "email",

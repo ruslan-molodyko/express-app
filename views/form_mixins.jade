@@ -16,7 +16,7 @@ mixin form_row(field, attr)
       +form_widget(field)
 
 mixin form_open(form, attr)
-  form&attributes(Object.assign(form._form_.attr, attr))
+  form&attributes(Object.assign(form.attr, attr))
     .form-group
       block
 

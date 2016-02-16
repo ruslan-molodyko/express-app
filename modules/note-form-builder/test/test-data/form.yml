@@ -5,7 +5,7 @@ case1:
       style:
         margin: auto
         width: 200px
-    fields:
+    field:
       - email
       - name
       - lastName

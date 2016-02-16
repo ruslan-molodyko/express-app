@@ -8,12 +8,12 @@ var path = require('path'),
     Form = require(path.join(__dirname, '..', 'form')),
     expect = require("chai").expect,
     YAML = require('yamljs'),
-    config = YAML.load(path.join(__dirname, 'test-data', 'text-type.yml'));
+    config = YAML.load(path.join(__dirname, 'test-data', 'button-type.yml'));
 
-describe('Type#text', function() {
+describe('Type#button', function() {
     it('Case 1, usual case', function() {
-        var textType = new Form(config.case1.login, 'login');
-        expect(textType.field.name.getData()).to.be.eql({
+        var buttonType = new Form(config.case1.login, 'login');
+        expect(buttonType.field.someField.getData()).to.be.eql({
             "attr": {
                 "name": "login-form-name",
                 "type": "text",
@@ -27,8 +27,9 @@ describe('Type#text', function() {
         });
     });
     it('Case 2, test fieldNameAsArray property', function() {
-        var textType = new Form(config.case2.login, 'login');
-        expect(textType.field.name.getData()).to.be.eql({
+        var buttonType = new Form(config.case2.login, 'login');
+        console.log(buttonType.field);
+        expect(buttonType.field.name.getData()).to.be.eql({
             "attr": {
                 "name": "login[login-form-name]",
                 "type": "text",
@@ -41,21 +42,9 @@ describe('Type#text', function() {
             "type": "text"
         });
     });
-    it('Case 3, test array notation of fields', function() {
-        var textType = new Form(config.case3.login, 'login');
-        expect(textType.field.name.getData()).to.be.eql({
-            "attr": {
-                "name": "login[name]",
-                "type": "text"
-            },
-            "label": "name",
-            "name": "name",
-            "type": "text"
-        });
-    });
-    it('Case 4, test array/object(mixed) notation of fields', function() {
-        var textType = new Form(config.case4.login, 'login');
-        expect(textType.field.name.getData()).to.be.eql({
+    it('Case 3, test array/object(mixed) notation of fields', function() {
+        var buttonType = new Form(config.case4.login, 'login');
+        expect(buttonType.field.name.getData()).to.be.eql({
             "attr": {
                 "name": "login[name]",
                 "type": "text"
@@ -65,10 +54,10 @@ describe('Type#text', function() {
             "type": "text"
         });
     });
-    it('Case 5, test array/object(mixed) notation of fields name property not defined', function() {
+    it('Case 4, test array/object(mixed) notation of fields name property not defined', function() {
         expect(function(){
-            var textType = new Form(config.case5.login, 'login');
-            console.log(textType.field.name.getData());
+            var buttonType = new Form(config.case5.login, 'login');
+            console.log(buttonType.field.name.getData());
         }).to.throws(Error);
     });
 });

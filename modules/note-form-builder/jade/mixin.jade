@@ -1,32 +1,16 @@
 //
    Created by admin on 06.02.2016.
 
-mixin form_error(field, attr)
-  - if (field.error != null)
-    .error&attributes(attr ? attr : {})= __(field.error)
-
-mixin form_label(field, attr)
-  - if (field.type !== 'button')
-      label&attributes(attr ? attr : {})= __(field.label)
-    block
-
+//- Render single field
 mixin form_widget(field, attr)
   - if (field.type == 'select')
-    select.form-control&attributes(Object.assign(field.attr, attr))
-      //- Iterate options
-      - each value, key in field.options
-        //- Handle object types
-        - if (typeof value === 'object')
-          //- Get first value from object
-          option(value=Object.keys(value)[0])= __(value[Object.keys(value)[0]])
-        - else
-          option(value=value)= __(value)
+    +type_select(field, attr)
   - else if (field.type == 'button')
-    button(type='submit', class='btn btn-primary')&attributes(Object.assign(field.attr, attr))= __(field.attr.name)
+    +type_button(field, attr)
   - else
-    input.form-control&attributes(Object.assign(field.attr, attr))
+    +type_text(field, attr)
 
-
+//- Render complex field(field, label, error)
 mixin form_row(field, attr)
   .row&attributes(attr ? attr : {})
     +form_error(field)
@@ -34,16 +18,42 @@ mixin form_row(field, attr)
       +form_widget(field)
 
 mixin form_open(form, attr)
-  form&attributes(Object.assign(form._form_.attr, attr))
+  form&attributes(Object.assign(form.attr, attr))
     .form-group
       block
 
 mixin form(form, attr)
   +form_open(form)
-    - each field, key in form
-      - if (key != '_form_')
+    - each field, key in form.field
         +form_row(field)
 
-mixin form_button(field, attr)
-  .row
-    button(type='submit', class='btn btn-primary')&attributes(Object.assign(field.attr, attr))= __(field.name)
+//- Render errors of field
+mixin form_error(field, attr)
+  - if (field.error != null)
+    .error&attributes(attr ? attr : {})= __(field.error)
+
+// Render label of field
+mixin form_label(field, attr)
+  - if (field.type !== 'button')
+    label&attributes(attr ? attr : {})= __(field.label)
+    block
+
+//- Text type of field
+mixin type_text(field, attr)
+  input.form-control&attributes(Object.assign(field.attr, attr))
+
+//- Button type of field
+mixin type_button(field, attr)
+  button(type='submit', class='btn btn-primary')&attributes(Object.assign(field.attr, attr))= __(field.attr.name)
+
+//- Select type of field
+mixin type_select(field, attr)
+  select.form-control&attributes(Object.assign(field.attr, attr))
+    //- Iterate options
+    - each value, key in field.options
+      //- Handle object types
+      - if (typeof value === 'object')
+        //- Get first value from object
+        option(value=Object.keys(value)[0])= __(value[Object.keys(value)[0]])
+      - else
+        option(value=value)= __(value)

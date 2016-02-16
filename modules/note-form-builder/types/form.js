@@ -26,7 +26,7 @@ module.exports = ABone.create(function() {
         }
 
         /** Fields which have to be parsed */
-        this.reservedAttributes = ['name', 'attr', 'fieldNameAsArray', 'fields'];
+        this.reservedAttributes = ['name', 'attr', 'fieldNameAsArray', 'field'];
         this.form = form;
         this.formName = formName;
         this.result = {};
@@ -104,13 +104,13 @@ module.exports = ABone.create(function() {
      * @param field
      * @param name
      */
-    this._fields = function(field, name) {
+    this._field = function(field, name) {
 
         // Set default value
         if (field === undefined) {
-            this.result.fields = {};
+            this.result.field = {};
         } else {
-            this.result.fields = field;
+            this.result.field = field;
         }
     };
 

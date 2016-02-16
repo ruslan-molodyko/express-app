@@ -31,6 +31,7 @@ module.exports = ABone.create(function() {
             throw new Error('Form is wrong');
         }
 
+        console.log(fieldName);
 
         // Form name
         this.form = form;
@@ -61,7 +62,7 @@ module.exports = ABone.create(function() {
 
             // Handle field or throw exception
             if (typeof this[methodName] === 'function') {
-                this[methodName](this.form.data.fields[this.fieldName][fieldName], fieldName);
+                this[methodName](this.form.data.field[this.fieldName][fieldName], fieldName);
             } else {
                 throw new Error('Handler for field [' + fieldName + '] not defined');
             }

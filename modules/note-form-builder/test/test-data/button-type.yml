@@ -9,7 +9,7 @@ case1:
             margin: 0
       someField:
         name: someName
-        type: text
+        type: button
 
 case2:
   login:
@@ -17,7 +17,7 @@ case2:
     field:
       name:
         name: login-form-name
-        type: text
+        type: button
         attr:
           style:
             margin: 0
@@ -29,7 +29,10 @@ case3:
   login:
     fieldNameAsArray: true
     field:
-      - name
+      -
+          name: name
+          label: custom-label
+          type: button
       - someField
 
 case4:
@@ -37,14 +40,6 @@ case4:
     fieldNameAsArray: true
     field:
       -
-          name: name
           label: custom-label
-      - someField
-
-case5:
-  login:
-    fieldNameAsArray: true
-    field:
-      -
-          label: custom-label
+          type: button
       - someField

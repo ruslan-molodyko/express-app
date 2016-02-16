@@ -33,7 +33,7 @@ module.exports = ABone.create(function() {
         this.data = data;
         this.formName = formName;
         this.form = new FormType(this.data, formName);
-        this.fields = {};
+        this.field = {};
 
         // Prepare class
         this.prepare();
@@ -45,13 +45,13 @@ module.exports = ABone.create(function() {
     this.prepare = function() {
 
         // Check if fields is exists
-        if (typeof this.data.fields != 'undefined' && this.data.fields != null) {
+        if (typeof this.data.field != 'undefined' && this.data.field != null) {
 
             // If fields passed as array
-            if (Array.isArray(this.data.fields)) {
+            if (Array.isArray(this.data.field)) {
                 var newFieldObject = {};
-                for (var key in this.data.fields) {
-                    var fieldName = this.data.fields[key];
+                for (var key in this.data.field) {
+                    var fieldName = this.data.field[key];
 
                     // The key is number but value is field name
                     if (typeof fieldName === 'string') {
@@ -84,23 +84,34 @@ module.exports = ABone.create(function() {
                 }
 
                 // Save new prepared object
-                this.data.fields = newFieldObject;
+                this.data.field = newFieldObject;
             }
 
             // Iterate all fields and set instances of their type
-            for (var fieldName in this.data.fields) {
+            for (var fieldName in this.data.field) {
 
-                // Get field
-                var field = this.data.fields[fieldName],
+                (function(fieldName, data) {
 
-                // Get field type
-                    fieldType = field.type || this.defaultType,
 
-                // Get type class
-                    Type = require(path.join(__dirname, 'types', fieldType));
+                    // Get field
+                    var field = data.field[fieldName],
 
-                // Save instances
-                this.fields[fieldName] = new Type(this, fieldName);
+                        // Get field type
+                        fieldType = field.type || this.defaultType,
+
+                        // Get type class
+                        Type = require(path.join(__dirname, 'types', fieldType));
+
+
+                    // Save instances
+                    this.field[fieldName] = new Type(this, fieldName);
+
+                    if (fieldType == 'button') {
+
+                        console.log(this.field[fieldName]);
+                    }
+
+                }.bind(this))(fieldName, this.data);
             }
         }
     };
@@ -108,17 +119,17 @@ module.exports = ABone.create(function() {
     /**
      * Get internal data
      */
-    this.getData = function() {
+    this.getForm = function() {
 
         // Get form data
         var data = this.form.getData();
-        data.fields = {};
+        data.field = {};
 
         // Iterate fields object and get their data
-        for (var fieldKey in this.fields) {
-            var field = this.fields[fieldKey],
+        for (var fieldKey in this.field) {
+            var field = this.field[fieldKey],
                 fieldData = field.getData();
-            data.fields[field.getName()] = fieldData;
+            data.field[field.getName()] = fieldData;
         }
 
         return data;

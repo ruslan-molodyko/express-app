@@ -16,7 +16,7 @@ describe('Type#form', function() {
         expect(formType.getData()).to.be.eql({
             "attr": {style: {margin: 0}},
             "fieldNameAsArray": true,
-            "fields": {},
+            "field": {},
             "name": "login-form-name"
         });
     });
@@ -25,7 +25,7 @@ describe('Type#form', function() {
         expect(formType.getData()).to.be.eql({
             "attr": {style: {margin: 0}},
             "fieldNameAsArray": true,
-            "fields": {},
+            "field": {},
             "name": "login"
         });
     });
@@ -34,7 +34,7 @@ describe('Type#form', function() {
         expect(formType.getData()).to.be.eql({
             "attr": {},
             "fieldNameAsArray": false,
-            "fields": {},
+            "field": {},
             "name": "login"
         });
     });
@@ -46,7 +46,7 @@ describe('Type#form', function() {
     });
     it('Form name is null', function() {
         expect(function() {
-            var formType = new FormType({fields: {}}, null);
+            var formType = new FormType({field: {}}, null);
         }).to.be.throws(Error);
     });
 });

@@ -19,7 +19,7 @@ router.post('/signup', function(req, res, next) {
 router.get('/signup', function(req, res, next) {
 
     console.log(configForm.signup);
-    res.render('signup', {title: 'Express', form: (new Form(configForm.signup)).getForm()});
+    res.render('signup', {title: 'Express', form: (new Form(configForm.signup, 'signup')).getForm()});
 });
 
 module.exports = router;

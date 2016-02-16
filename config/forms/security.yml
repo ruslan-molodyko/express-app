@@ -26,13 +26,13 @@ signup:
   fields:
     - email
     - name
-    - gender:
-        type: select
-        options:
-          - one: hello
-          - second
+#    - gender:
+#        type: select
+#        options:
+#          - one: hello
+#          - second
     - lastName
     - password1
     - password2
     - submit:
-        type: button
+        type: text
