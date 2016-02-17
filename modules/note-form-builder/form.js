@@ -92,7 +92,6 @@ module.exports = ABone.create(function() {
 
                 (function(fieldName, data) {
 
-
                     // Get field
                     var field = data.field[fieldName],
 
@@ -100,16 +99,10 @@ module.exports = ABone.create(function() {
                         fieldType = field.type || this.defaultType,
 
                         // Get type class
-                        Type = require(path.join(__dirname, 'types', fieldType));
-
+                        Type = require(path.join(__dirname, 'types', fieldType + '.js'));
 
                     // Save instances
                     this.field[fieldName] = new Type(this, fieldName);
-
-                    if (fieldType == 'button') {
-
-                        console.log(this.field[fieldName]);
-                    }
 
                 }.bind(this))(fieldName, this.data);
             }

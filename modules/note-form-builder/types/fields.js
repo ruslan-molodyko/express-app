@@ -31,8 +31,6 @@ module.exports = ABone.create(function() {
             throw new Error('Form is wrong');
         }
 
-        console.log(fieldName);
-
         // Form name
         this.form = form;
         this.formName = form.formName;

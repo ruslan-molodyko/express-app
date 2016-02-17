@@ -10,6 +10,10 @@ var ABone = require('abone'),
  */
 module.exports = ABone.create(function() {
 
+    //this.constructor = function() {
+    //    this.parentClass.constructor.apply(this, arguments);
+    //};
+
     /**
      * Init type
      */
@@ -93,4 +97,3 @@ module.exports = ABone.create(function() {
     };
 
 }, Fields);
-
