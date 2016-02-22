@@ -35,21 +35,18 @@ describe('Type#button', function() {
         });
     });
     it('Case 3, test array/object(mixed) notation of fields', function() {
-        var buttonType = new Form(config.case4.login, 'login');
+        var buttonType = new Form(config.case3.login, 'login');
         expect(buttonType.field.name.getData()).to.be.eql({
             "attr": {
-                "name": "login[name]",
-                "type": "text"
+                "type": "submit"
             },
             "label": "custom-label",
-            "name": "name",
-            "type": "text"
+            "type": "button"
         });
     });
     it('Case 4, test array/object(mixed) notation of fields name property not defined', function() {
         expect(function(){
             var buttonType = new Form(config.case5.login, 'login');
-            console.log(buttonType.field.name.getData());
         }).to.throws(Error);
     });
 });

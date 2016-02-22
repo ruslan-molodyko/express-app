@@ -44,6 +44,7 @@ All possible types:
         - 'key' - [string] Name and value of option tag will be 'key'
         - [object] - Single object with one key and one value. Key of object will be defined as value of option tab and value of object - as key of tag. For example: {"key": "value"}
         - [object] - Complex object with name ob key and value. For example: {"name": "some_name", "value": "some_value"}
+    * You can not mixed types of option
 
 2. Full configuration:
 
@@ -65,6 +66,8 @@ login:
           - one: hello
           - second
     - lastName
+    - 
+        name: age
     - password1
     - password2
     - submit:

@@ -15,3 +15,28 @@ case1:
           name: password2
       - submit:
           type: text
+
+case2:
+  login:
+    attr:
+      style:
+        margin: auto
+        width: 200px
+    field:
+      - email:
+          type: text
+          name: login-email
+          label: Email
+      - name
+      - gender:
+          type: select
+          options:
+             one: hello
+             second: second
+      - lastName
+      -
+          name: age
+      - password1
+      - password2
+      - submit:
+          type: button

@@ -61,6 +61,7 @@ module.exports = ABone.create(function() {
                         typeof fieldName === 'object'
                         && Array.isArray(this.data.field)
                         && typeof fieldName.name === 'string'
+                        && fieldName.name.length > 0
                     ) {
                         newFieldObject[fieldName.name] = fieldName;
 

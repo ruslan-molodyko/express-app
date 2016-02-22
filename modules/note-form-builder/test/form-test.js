@@ -1,9 +1,9 @@
 /**
  * Created by admin on 03.02.2016.
  */
-require("blanket")({ pattern: function (filename) {
-    return !/node_modules/.test(filename);
-} });
+//require("blanket")({ pattern: function (filename) {
+//    return !/node_modules/.test(filename);
+//} });
 
 var path = require('path'),
     Form = require(path.join(__dirname, '..', 'index')).Form,
@@ -89,6 +89,99 @@ describe('Form#initialization', function() {
                     "type": "text"
                 }
             }
+        });
+    });
+    it('Case 2, readme form example', function() {
+        var data = new Form(config.case2.login, 'login');
+        expect(data.getForm()).to.be.eql({
+            "attr": {
+                "style": {
+                    "margin": "auto",
+                    "width": "200px"
+                }
+            },
+            "field": {
+                "age": {
+                    "attr": {
+                        "name": "age",
+                        "type": "text"
+                    },
+                    "label": "age",
+                    "name": "age",
+                    "type": "text"
+                },
+                "email": {
+                    "attr": {
+                        "name": "login-email",
+                        "type": "text"
+                    },
+                    "label": "Email",
+                    "name": "login-email",
+                    "type": "text"
+                },
+                "gender": {
+                    "attr": {
+                        "name": "gender"
+                    },
+                    "label": "gender",
+                    "name": "gender",
+                    "options": [
+                        {
+                            "name": "hello",
+                            "value": "one"
+                        },
+                        {
+                            "name": "second",
+                            "value": "second"
+                        }
+                    ]
+                },
+                "lastName": {
+                    "attr": {
+                        "name": "lastName",
+                        "type": "text"
+                    },
+                    "label": "lastName",
+                    "name": "lastName",
+                    "type": "text"
+                },
+                "name": {
+                    "attr": {
+                        "name": "name",
+                        "type": "text"
+                    },
+                    "label": "name",
+                    "name": "name",
+                    "type": "text"
+                },
+                "password1": {
+                    "attr": {
+                        "name": "password1",
+                        "type": "text"
+                    },
+                    "label": "password1",
+                    "name": "password1",
+                    "type": "text"
+                },
+                "password2": {
+                    "attr": {
+                        "name": "password2",
+                        "type": "text"
+                    },
+                    "label": "password2",
+                    "name": "password2",
+                    "type": "text"
+                },
+                "submit": {
+                    "attr": {
+                        "type": "submit"
+                    },
+                    "label": "submit",
+                    "type": "button"
+                }
+            },
+            "fieldNameAsArray": false,
+            "name": "login"
         });
     });
 });
