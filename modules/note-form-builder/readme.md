@@ -6,7 +6,7 @@ _Possible config which describes form structure:_
 
 ```
 login:
-  fields:
+  field:
     - email
     - name
     - lastName
@@ -54,8 +54,8 @@ login:
     style:
       margin: auto
       width: 200px
-  fields:
-    - email
+  field:
+    - email:
         type: text
         name: login-email
         label: Email
@@ -63,10 +63,10 @@ login:
     - gender:
         type: select
         options:
-          - one: hello
-          - second
+           one: hello
+           second: second
     - lastName
-    - 
+    -
         name: age
     - password1
     - password2
