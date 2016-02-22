@@ -15,31 +15,23 @@ describe('Type#button', function() {
         var buttonType = new Form(config.case1.login, 'login');
         expect(buttonType.field.someField.getData()).to.be.eql({
             "attr": {
-                "name": "login-form-name",
-                "type": "text",
-                "style": {
-                    margin: 0
-                }
+                "type": "submit"
             },
-            "label": "name",
-            "name": "login-form-name",
-            "type": "text"
+            "label": "someField",
+            "type": "button"
         });
     });
     it('Case 2, test fieldNameAsArray property', function() {
         var buttonType = new Form(config.case2.login, 'login');
-        console.log(buttonType.field);
         expect(buttonType.field.name.getData()).to.be.eql({
             "attr": {
-                "name": "login[login-form-name]",
-                "type": "text",
                 "style": {
-                    margin: 0
-                }
+                    "margin": 0
+                },
+                "type": "submit"
             },
             "label": "name",
-            "name": "login-form-name",
-            "type": "text"
+            "type": "button"
         });
     });
     it('Case 3, test array/object(mixed) notation of fields', function() {

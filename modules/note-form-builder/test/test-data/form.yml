@@ -10,6 +10,8 @@ case1:
       - name
       - lastName
       - password1
-      - password2
+      -
+          type: text
+          name: password2
       - submit:
           type: text

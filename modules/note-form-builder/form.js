@@ -59,21 +59,18 @@ module.exports = ABone.create(function() {
                         // Object into array, get his name value name property in this case must be required
                     } else if (
                         typeof fieldName === 'object'
-                        && fieldName != null
-                        && (
-                            typeof fieldName.name === 'string'
-                            || !key.match(/\d+/g)
-                        )
+                        && Array.isArray(this.data.field)
+                        && typeof fieldName.name === 'string'
                     ) {
-                        newFieldObject[fieldName.name || key] = fieldName;
+                        newFieldObject[fieldName.name] = fieldName;
 
                         // If key is number but first inner key is string then this key is field name
-                    } else if (key.match(/\d+/g) && typeof this.getObjectFirstKey(fieldName) === 'string') {
+                    } else if (typeof this.getObjectFirstKey(fieldName) === 'string') {
 
                         var firstKey = this.getObjectFirstKey(fieldName),
                             fieldObject = fieldName[firstKey];
 
-                        newFieldObject[fieldObject.name || firstKey] = fieldObject;
+                        newFieldObject[firstKey] = fieldObject;
 
                         // Wrong object
                     } else {
