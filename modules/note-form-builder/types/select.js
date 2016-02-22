@@ -16,13 +16,35 @@ module.exports = ABone.create(function() {
     this.init = function() {
 
         /** Fields which have to be parsed */
-        this.reservedAttributes = ['attr', 'label', 'name', 'type']; // Attr must iterate before all the rest
+        this.reservedAttributes = ['attr', 'label', 'name', 'type', 'options']; // Attr must iterate before all the rest
 
         /** Name of current type */
-        this.classType = 'text';
+        this.classType = 'select';
 
         // Convert data
         this.convert();
+    };
+
+    /**
+     * Handle field
+     * @param field
+     */
+    this._name = function(field) {
+
+        // Check and set default value
+        if (field === undefined) {
+            this.result.options = [];
+        } else {
+            this.result.name = field;
+        }
+
+        // Set name as attribute of html tag
+        this.result.attr.name = this.result.attr.name || this.result.name;
+
+        // Wrap name as array by form name
+        if (this.form.data.fieldNameAsArray === true) {
+            this.result.attr.name = this.formName + '[' + this.result.attr.name + ']';
+        }
     };
 
     /**
@@ -45,23 +67,6 @@ module.exports = ABone.create(function() {
         if (this.form.data.fieldNameAsArray === true) {
             this.result.attr.name = this.formName + '[' + this.result.attr.name + ']';
         }
-    };
-
-    /**
-     * Handle field
-     * @param field
-     */
-    this._type = function(field) {
-
-        // Check and set default value
-        if (field === undefined) {
-            this.result.type = this.classType;
-        } else {
-            this.result.type = field;
-        }
-
-        // Set type as attribute of html tag
-        this.result.attr.type = this.result.attr.type || this.result.type;
     };
 
     /**
