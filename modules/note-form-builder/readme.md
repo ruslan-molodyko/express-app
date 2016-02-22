@@ -48,6 +48,8 @@ All possible types:
 
 2. Full configuration:
 
+Here is example of full form config:
+
 ```
 login:
   attr:
