@@ -42,7 +42,8 @@ All possible types:
 3. select - html@select
     * options - [array] All options which will be used for specifying option tags in select
         - 'key' - [string] Name and value of option tag will be 'key'
-        - 'key' - [object] Key of object will be defined as value of option tab and value of object - as key of tag
+        - [object] - Single object with one key and one value. Key of object will be defined as value of option tab and value of object - as key of tag. For example: {"key": "value"}
+        - [object] - Complex object with name ob key and value. For example: {"name": "some_name", "value": "some_value"}
 
 2. Full configuration:
 

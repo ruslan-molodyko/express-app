@@ -62,7 +62,7 @@ module.exports = ABone.create(function() {
             if (typeof this[methodName] === 'function') {
                 this[methodName](this.form.data.field[this.fieldName][fieldName], fieldName);
             } else {
-                throw new Error('Handler for field [' + fieldName + '] not defined');
+                throw new Error('Handler of type for reserved attribute [' + fieldName + '] not defined');
             }
 
         }.bind(this));
