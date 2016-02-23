@@ -39,6 +39,12 @@ ___Test coverage___
 3. Set external tool in webstorm
 4. Use it as below in my coverage.bat
 
+___Useful___
+
+1. [WebStorm tips](https://habrahabr.ru/company/JetBrains/blog/168267/)
+2. [WebStorm hot key](http://glide.name/2012/06/php-ide-phpstorm-tips-and-tricks/)
+3. http://usejsdoc.org/
+
 ```
 _mocha C:\node\app\modules\note-form-builder\test --require blanket --reporter html-cov > public/coverage.html 
 ```

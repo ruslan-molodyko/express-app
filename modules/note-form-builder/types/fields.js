@@ -6,23 +6,25 @@ var ABone = require('abone'),
     Form = require(path.join(__dirname, '..', 'form.js'));
 
 /**
- * Parent form for fieds type
+ * Parent form for fields type
  */
-module.exports = ABone.create(function() {
+module.exports = ABone.create(function () {
+    "use strict";
 
     /**
      * Init class
-     * @param form Form in converted form
+     * @param {object} form Form in converted form
+     * @param {string} fieldName Form name
      */
-    this.constructor = function(form, fieldName) {
+    this.constructor = function (form, fieldName) {
 
         // Check form data
-        if (form == null) {
+        if (!form) {
             throw new Error('Form data is not valid');
         }
 
         // Check field name
-        if (fieldName == null) {
+        if (!fieldName) {
             throw new Error('Field name not passed');
         }
 
@@ -46,10 +48,10 @@ module.exports = ABone.create(function() {
     /**
      * Prepare data
      */
-    this.convert = function() {
+    this.convert = function () {
 
         // Iterate all reserved attributes
-        this.reservedAttributes.forEach(function(val) {
+        this.reservedAttributes.forEach(function (val) {
             var fieldName = val,
                 methodName = '_' + fieldName;
 
@@ -74,7 +76,7 @@ module.exports = ABone.create(function() {
      * Get result data from form field
      * @returns {*}
      */
-    this.getData = function() {
+    this.getData = function () {
         return this.result;
     };
 
@@ -82,7 +84,7 @@ module.exports = ABone.create(function() {
      * Get field name
      * @returns {*}
      */
-    this.getName = function() {
+    this.getName = function () {
         return this.fieldName;
-    }
+    };
 });
