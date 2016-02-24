@@ -28,7 +28,7 @@ module.exports = ABone.create(function () {
         }
 
         /** Fields which have to be parsed */
-        this.reservedAttributes = ['name', 'attr', 'fieldNameAsArray', 'field', 'value'];
+        this.reservedAttributes = ['name', 'attr', 'fieldNameAsArray', 'field'];
         this.form = form;
         this.formName = formName;
         this.result = {};

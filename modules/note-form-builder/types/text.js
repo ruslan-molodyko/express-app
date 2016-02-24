@@ -8,12 +8,14 @@ var ABone = require('abone'),
 /**
  * Create form
  */
-module.exports = ABone.create(function() {
+module.exports = ABone.create(function () {
+
+    'use strict';
 
     /**
      * Init type
      */
-    this.init = function() {
+    this.init = function () {
 
         /** Fields which have to be parsed */
         this.reservedAttributes = ['attr', 'label', 'name', 'type']; // Attr must iterate before all the rest
@@ -29,7 +31,7 @@ module.exports = ABone.create(function() {
      * Handle field
      * @param field
      */
-    this._name = function(field) {
+    this._name = function (field) {
 
         // Check and set default value
         if (field === undefined) {
@@ -51,7 +53,7 @@ module.exports = ABone.create(function() {
      * Handle field
      * @param field
      */
-    this._type = function(field) {
+    this._type = function (field) {
 
         // Check and set default value
         if (field === undefined) {
@@ -68,7 +70,7 @@ module.exports = ABone.create(function() {
      * Handle field
      * @param field
      */
-    this._attr = function(field) {
+    this._attr = function (field) {
 
         // Check and set default value
         if (field === undefined) {
@@ -82,7 +84,7 @@ module.exports = ABone.create(function() {
      * Handle field
      * @param field
      */
-    this._label = function(field) {
+    this._label = function (field) {
 
         // Check and set default value
         if (field === undefined) {

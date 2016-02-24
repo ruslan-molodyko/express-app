@@ -8,13 +8,15 @@ var ABone = require('abone'),
 /**
  * Create form
  */
-module.exports = ABone.create(function() {
+module.exports = ABone.create(function () {
+
+    'use strict';
 
     /**
      * Init class
      * @param data
      */
-    this.constructor = function(data, formName) {
+    this.constructor = function (data, formName) {
 
         // Check argument
         if (data == null) {
@@ -42,34 +44,35 @@ module.exports = ABone.create(function() {
     /**
      * Prepare form
      */
-    this.prepare = function() {
+    this.prepare = function () {
+
+        var newFieldObject = {}, key, fieldName, firstKey, fieldObject, field, fieldType, Type;
 
         // Check if fields is exists
-        if (typeof this.data.field != 'undefined' && this.data.field != null) {
+        if (this.data.field !== undefined && this.data.field != null) {
 
             // If fields passed as array
             if (Array.isArray(this.data.field)) {
-                var newFieldObject = {};
-                for (var key in this.data.field) {
-                    var fieldName = this.data.field[key];
+                for (key in this.data.field) {
+                    fieldName = this.data.field[key];
 
                     // The key is number but value is field name
                     if (typeof fieldName === 'string') {
                         newFieldObject[fieldName] = {};
                         // Object into array, get his name value name property in this case must be required
                     } else if (
-                        typeof fieldName === 'object'
-                        && Array.isArray(this.data.field)
-                        && typeof fieldName.name === 'string'
-                        && fieldName.name.length > 0
+                        typeof fieldName === 'object' &&
+                        Array.isArray(this.data.field) &&
+                        typeof fieldName.name === 'string' &&
+                        fieldName.name.length > 0
                     ) {
                         newFieldObject[fieldName.name] = fieldName;
 
                         // If key is number but first inner key is string then this key is field name
                     } else if (typeof this.getObjectFirstKey(fieldName) === 'string') {
 
-                        var firstKey = this.getObjectFirstKey(fieldName),
-                            fieldObject = fieldName[firstKey];
+                        firstKey = this.getObjectFirstKey(fieldName);
+                        fieldObject = fieldName[firstKey];
 
                         newFieldObject[firstKey] = fieldObject;
 
@@ -86,23 +89,19 @@ module.exports = ABone.create(function() {
             }
 
             // Iterate all fields and set instances of their type
-            for (var fieldName in this.data.field) {
+            for (key in this.data.field) {
 
-                (function(fieldName, data) {
+                // Get field
+                field = this.data.field[key];
 
-                    // Get field
-                    var field = data.field[fieldName],
+                // Get field type
+                fieldType = field.type || this.defaultType;
 
-                        // Get field type
-                        fieldType = field.type || this.defaultType,
+                // Get type class
+                Type = require(path.join(__dirname, 'types', fieldType + '.js'));
 
-                        // Get type class
-                        Type = require(path.join(__dirname, 'types', fieldType + '.js'));
-
-                    // Save instances
-                    this.field[fieldName] = new Type(this, fieldName);
-
-                }.bind(this))(fieldName, this.data);
+                // Save instances
+                this.field[key] = new Type(this, key);
             }
         }
     };
@@ -110,16 +109,16 @@ module.exports = ABone.create(function() {
     /**
      * Get internal data
      */
-    this.getForm = function() {
+    this.getForm = function () {
 
         // Get form data
-        var data = this.form.getData();
+        var data = this.form.getData(), fieldKey, field, fieldData;
         data.field = {};
 
         // Iterate fields object and get their data
-        for (var fieldKey in this.field) {
-            var field = this.field[fieldKey],
-                fieldData = field.getData();
+        for (fieldKey in this.field) {
+            field = this.field[fieldKey];
+            fieldData = field.getData();
             data.field[field.getName()] = fieldData;
         }
 
@@ -132,13 +131,14 @@ module.exports = ABone.create(function() {
      * @param object
      * @returns {string}
      */
-    this.getObjectFirstKey = function(object) {
+    this.getObjectFirstKey = function (object) {
 
-        if (typeof object === 'object') {
-            for (var i in object) { return i; }
-        } else {
-            throw new Error('That is not an object');
+        var keys = Object.keys(object);
+
+        if (typeof object === 'object' && keys[0] !== undefined) {
+            return keys[0];
         }
+        throw new Error('That is not an object');
     };
 });
 

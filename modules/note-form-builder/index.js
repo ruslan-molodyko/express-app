@@ -12,11 +12,5 @@ module.exports = {
     /**
      * Save link to form
      */
-    Form: Form,
-
-    /**
-     * Init form builder
-     * @param app
-     */
-    init: function(app) {}
+    Form: Form
 };

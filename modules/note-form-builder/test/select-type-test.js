@@ -1,17 +1,21 @@
 /**
  * Created by admin on 11.02.2016.
  */
+
+'use strict';
+
 require("blanket")({ pattern: function (filename) {
     return !/node_modules/.test(filename);
-} });
+}});
+
 var path = require('path'),
     Form = require(path.join(__dirname, '..', 'form')),
     expect = require("chai").expect,
     YAML = require('yamljs'),
     config = YAML.load(path.join(__dirname, 'test-data', 'select-type.yml'));
 
-describe('Type#select', function() {
-    it('Case 1, usual case', function() {
+describe('Type#select', function () {
+    it('Case 1, usual case', function () {
         var type = new Form(config.case1.login, 'login');
         expect(type.field.someField.getData()).to.be.eql({
             "attr": {
@@ -35,7 +39,7 @@ describe('Type#select', function() {
             ]
         });
     });
-    it('Case 2, test fieldNameAsArray property', function() {
+    it('Case 2, test fieldNameAsArray property', function () {
         var type = new Form(config.case2.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
             "attr": {
@@ -59,7 +63,7 @@ describe('Type#select', function() {
             ]
         });
     });
-    it('Case 3, minimal data of type', function() {
+    it('Case 3, minimal data of type', function () {
         var type = new Form(config.case3.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
             "attr": {
@@ -70,7 +74,7 @@ describe('Type#select', function() {
             "options": []
         });
     });
-    it('Case 4, simple object notation of options', function() {
+    it('Case 4, simple object notation of options', function () {
         var type = new Form(config.case4.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
             "attr": {
@@ -94,7 +98,7 @@ describe('Type#select', function() {
             ]
         });
     });
-    it('Case 5, complex object notation of options', function() {
+    it('Case 5, complex object notation of options', function () {
         var type = new Form(config.case5.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
             "attr": {
@@ -118,7 +122,7 @@ describe('Type#select', function() {
             ]
         });
     });
-    it('Case 6, test attr and label attributes', function() {
+    it('Case 6, test attr and label attributes', function () {
         var type = new Form(config.case6.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
             "attr": {

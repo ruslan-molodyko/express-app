@@ -1,28 +1,31 @@
 /**
  * Created by admin on 03.02.2016.
  */
-//require("blanket")({ pattern: function (filename) {
-//    return !/node_modules/.test(filename);
-//} });
+
+'use strict';
+
+require("blanket")({ pattern: function (filename) {
+    return !/node_modules/.test(filename);
+}});
 
 var path = require('path'),
     Form = require(path.join(__dirname, '..', 'index')).Form,
     YAML = require('yamljs'),
-    config = YAML.load(path.join(__dirname, 'test-data', 'form.yml'));
+    config = YAML.load(path.join(__dirname, 'test-data', 'form.yml')),
     expect = require("chai").expect;
 
-describe('Form#initialization', function() {
-    it('Init form, empty data', function() {
-        expect(function() {
+describe('Form#initialization', function () {
+    it('Init form, empty data', function () {
+        expect(function () {
             new Form();
         }).to.throws(Error);
     });
     it('Init form, form name not exists', function() {
-        expect(function() {
+        expect(function () {
             new Form({});
         }).to.throws(Error);
     });
-    it('Case 1, usual form', function() {
+    it('Case 1, usual form', function () {
         var data = new Form(config.case1.signup, 'login');
         expect(data.getForm()).to.be.eql({
             "attr": {
@@ -91,7 +94,7 @@ describe('Form#initialization', function() {
             }
         });
     });
-    it('Case 2, readme form example', function() {
+    it('Case 2, readme form example', function () {
         var data = new Form(config.case2.login, 'login');
         expect(data.getForm()).to.be.eql({
             "attr": {
