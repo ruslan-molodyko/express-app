@@ -18,6 +18,7 @@ describe('Type#select', function () {
     it('Case 1, usual case', function () {
         var type = new Form(config.case1.login, 'login');
         expect(type.field.someField.getData()).to.be.eql({
+            "type": "select",
             "attr": {
                 "name": "someName"
             },
@@ -42,6 +43,7 @@ describe('Type#select', function () {
     it('Case 2, test fieldNameAsArray property', function () {
         var type = new Form(config.case2.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
+            "type": "select",
             "attr": {
                 "name": "login[selectField]"
             },
@@ -66,6 +68,7 @@ describe('Type#select', function () {
     it('Case 3, minimal data of type', function () {
         var type = new Form(config.case3.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
+            "type": "select",
             "attr": {
                 "name": "selectField"
             },
@@ -77,6 +80,7 @@ describe('Type#select', function () {
     it('Case 4, simple object notation of options', function () {
         var type = new Form(config.case4.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
+            "type": "select",
             "attr": {
                 "name": "selectField"
             },
@@ -101,6 +105,7 @@ describe('Type#select', function () {
     it('Case 5, complex object notation of options', function () {
         var type = new Form(config.case5.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
+            "type": "select",
             "attr": {
                 "name": "selectField"
             },
@@ -125,6 +130,7 @@ describe('Type#select', function () {
     it('Case 6, test attr and label attributes', function () {
         var type = new Form(config.case6.login, 'login');
         expect(type.field.selectField.getData()).to.be.eql({
+            "type": "select",
             "attr": {
                 "name": "selectField",
                 "style": {

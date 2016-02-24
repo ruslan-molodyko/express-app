@@ -40,6 +40,9 @@ module.exports = ABone.create(function () {
         this.fieldName = fieldName;
         this.result = {};
 
+        /** Get tag id */
+        this.tagId = this.formName + '-' + this.fieldName + '-field';
+
         /**
          * Init form
          */

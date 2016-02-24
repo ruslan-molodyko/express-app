@@ -123,6 +123,7 @@ describe('Form#initialization', function () {
                     "type": "text"
                 },
                 "gender": {
+                    "type": "select",
                     "attr": {
                         "name": "gender"
                     },

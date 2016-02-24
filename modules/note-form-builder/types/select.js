@@ -18,7 +18,7 @@ module.exports = ABone.create(function () {
     this.init = function () {
 
         /** Fields which have to be parsed */
-        this.reservedAttributes = ['attr', 'label', 'name', 'options']; // Attr must iterate before all the rest
+        this.reservedAttributes = ['attr', 'label', 'name', 'type', 'options']; // Attr must iterate before all the rest
 
         /** Name of current type */
         this.classType = 'select';
@@ -35,6 +35,30 @@ module.exports = ABone.create(function () {
     this.setValue = function (value) {
 
         this.value = value;
+    };
+
+
+    /**
+     * Handle field
+     * @param field
+     */
+    this._type = function (field) {
+
+        this.result.type = field;
+    };
+
+    /**
+     * Handle field
+     * @param field
+     */
+    this._options = function (field) {
+
+        // Check and set default value
+        if (field === undefined) {
+            this.result.options = [];
+        } else {
+            this.result.options = this.formatOptions(field);
+        }
     };
 
     /**
@@ -133,9 +157,16 @@ module.exports = ABone.create(function () {
 
         // Check and set default value
         if (field === undefined) {
-            this.result.attr = {};
+            this.result.attr = {
+                id: this.tagId
+            };
         } else {
             this.result.attr = field;
+
+            // Set id to attr array
+            if (field.id === undefined) {
+                this.result.attr.id = this.tagId;
+            }
         }
     };
 

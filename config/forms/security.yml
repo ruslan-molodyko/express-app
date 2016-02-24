@@ -23,16 +23,16 @@ signup:
     style:
       margin: auto
       width: 200px
-  fields:
+  field:
     - email
     - name
-#    - gender:
-#        type: select
-#        options:
-#          - one: hello
-#          - second
+    - gender:
+        type: select
+        options:
+          one: hello
+          two: second
     - lastName
     - password1
     - password2
     - submit:
-        type: text
+        type: button

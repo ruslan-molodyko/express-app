@@ -15,7 +15,7 @@ mixin form_row(field, attr)
   .row&attributes(attr ? attr : {})
     +form_error(field)
     +form_label(field)
-      +form_widget(field)
+    +form_widget(field)
 
 mixin form_open(form, attr)
   form&attributes(Object.assign(form.attr, attr))
@@ -35,8 +35,7 @@ mixin form_error(field, attr)
 // Render label of field
 mixin form_label(field, attr)
   - if (field.type !== 'button')
-    label&attributes(attr ? attr : {})= __(field.label)
-    block
+    label(for=field.attr.id)&attributes(attr ? attr : {})= __(field.label)
 
 //- Text type of field
 mixin type_text(field, attr)
@@ -44,7 +43,7 @@ mixin type_text(field, attr)
 
 //- Button type of field
 mixin type_button(field, attr)
-  button(type='submit', class='btn btn-primary')&attributes(Object.assign(field.attr, attr))= __(field.attr.name)
+  button(type='submit', class='btn btn-primary')&attributes(Object.assign(field.attr, attr))= __(attr != null && attr.label != null ? attr.label : field.label)
 
 //- Select type of field
 mixin type_select(field, attr)

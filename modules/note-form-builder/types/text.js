@@ -87,9 +87,16 @@ module.exports = ABone.create(function () {
 
         // Check and set default value
         if (field === undefined) {
-            this.result.attr = {};
+            this.result.attr = {
+                id: this.tagId
+            };
         } else {
             this.result.attr = field;
+
+            // Set id to attr array
+            if (field.id === undefined) {
+                this.result.attr.id = this.tagId;
+            }
         }
     };
 

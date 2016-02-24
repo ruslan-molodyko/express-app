@@ -1,6 +1,9 @@
 /**
  * Created by admin on 06.02.2016.
  */
+
+'use strict';
+
 var express = require('express'),
     User = require('../models/user'),
     form = require("express-form"),
@@ -9,17 +12,18 @@ var express = require('express'),
     field = form.field,
     router = express.Router(),
     YAML = require('yamljs'),
-    configForm = YAML.load('./config/forms/security.yml')
-    ;
+    configForm = YAML.load('./config/forms/security.yml');
 
-router.post('/signup', function(req, res, next) {
+router.post('/signup', function (req, res) {
     res.send(res.body);
 });
 
-router.get('/signup', function(req, res, next) {
+router.get('/signup', function (req, res) {
 
     console.log(configForm.signup);
-    res.render('signup', {title: 'Express', form: (new Form(configForm.signup, 'signup')).getForm()});
+    var formView = (new Form(configForm.signup, 'signup')).getForm();
+    console.log(formView);
+    res.render('signup', {title: 'Express', form: formView});
 });
 
 module.exports = router;
