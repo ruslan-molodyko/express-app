@@ -13,10 +13,10 @@ module.exports = ABone.create(function() {
     /**
      * Init type
      */
-    this.init = function() {
+    this.init = function () {
 
         /** Fields which have to be parsed */
-        this.reservedAttributes = ['attr', 'label', 'type']; // Attr must iterate before all the rest
+        this.reservedAttributes = ['attr', 'label', 'type', 'value']; // Attr must iterate before all the rest
 
         /** Name of current type */
         this.classType = 'checkbox';

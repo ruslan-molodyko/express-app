@@ -6,14 +6,16 @@ var ABone = require('abone');
 /**
  * Create form
  */
-module.exports = ABone.create(function() {
+module.exports = ABone.create(function () {
+
+    'use strict';
 
     /**
      * Init class
      * @param form
      * @param formName
      */
-    this.constructor = function(form, formName) {
+    this.constructor = function (form, formName) {
 
         // Check form data
         if (form == null) {
@@ -26,7 +28,7 @@ module.exports = ABone.create(function() {
         }
 
         /** Fields which have to be parsed */
-        this.reservedAttributes = ['name', 'attr', 'fieldNameAsArray', 'field'];
+        this.reservedAttributes = ['name', 'attr', 'fieldNameAsArray', 'field', 'value'];
         this.form = form;
         this.formName = formName;
         this.result = {};
@@ -39,16 +41,16 @@ module.exports = ABone.create(function() {
      * Get internal data
      * @returns {*}
      */
-    this.getData = function() {
+    this.getData = function () {
         return this.result;
     };
 
     /**
      * Prepare data
      */
-    this.convert = function() {
+    this.convert = function () {
 
-        this.reservedAttributes.forEach(function(val) {
+        this.reservedAttributes.forEach(function (val) {
             var fieldName = val,
                 methodName = '_' + fieldName;
 
@@ -72,9 +74,8 @@ module.exports = ABone.create(function() {
     /**
      * Handle name field
      * @param field
-     * @param name
      */
-    this._name = function(field, name) {
+    this._name = function (field) {
 
         // Set default value
         if (field === undefined) {
@@ -87,9 +88,8 @@ module.exports = ABone.create(function() {
     /**
      * Handle attr field
      * @param field
-     * @param name
      */
-    this._attr = function(field, name) {
+    this._attr = function (field) {
 
         // Set default value
         if (field === undefined) {
@@ -102,9 +102,8 @@ module.exports = ABone.create(function() {
     /**
      * Handle fields field
      * @param field
-     * @param name
      */
-    this._field = function(field, name) {
+    this._field = function (field) {
 
         // Set default value
         if (field === undefined) {
@@ -117,9 +116,8 @@ module.exports = ABone.create(function() {
     /**
      * Handle fieldNameAsArray field
      * @param field
-     * @param name
      */
-    this._fieldNameAsArray = function(field, name) {
+    this._fieldNameAsArray = function (field) {
 
         // Set default value
         if (field === undefined) {
