@@ -28,6 +28,16 @@ module.exports = ABone.create(function () {
     };
 
     /**
+     * Set value of field
+     *
+     * @param value Value of field
+     */
+    this.setValue = function (value) {
+
+        this.value = value;
+    };
+
+    /**
      * Handle field
      * @param field
      */

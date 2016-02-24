@@ -9,6 +9,7 @@ var ABone = require('abone'),
  * Parent form for fields type
  */
 module.exports = ABone.create(function () {
+
     "use strict";
 
     /**
@@ -43,6 +44,15 @@ module.exports = ABone.create(function () {
          * Init form
          */
         this.init();
+    };
+
+    /**
+     * Get value of input
+     *
+     * @returns {*}
+     */
+    this.getValue = function () {
+        return this.value;
     };
 
     /**
