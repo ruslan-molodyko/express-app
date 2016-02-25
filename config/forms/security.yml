@@ -36,3 +36,10 @@ signup:
     - password2
     - submit:
         type: button
+
+signupValue:
+  email: molodyko13@gmail.com
+  name: Ruslan
+  lastName: Molodyko
+  password1: 123456
+  password2: 123456

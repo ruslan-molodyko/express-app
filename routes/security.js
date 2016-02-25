@@ -21,8 +21,7 @@ router.post('/signup', function (req, res) {
 router.get('/signup', function (req, res) {
 
     console.log(configForm.signup);
-    var formView = (new Form(configForm.signup, 'signup')).getForm();
-    console.log(formView);
+    var formView = (new Form(configForm.signup, 'signup', configForm.signupValue)).getForm();
     res.render('signup', {title: 'Express', form: formView});
 });
 
