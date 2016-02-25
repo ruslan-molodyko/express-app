@@ -34,8 +34,8 @@ module.exports = ABone.create(function () {
      * @param value Value of field
      */
     this.setValue = function (value) {
-
         this.value = value;
+        this.result.value = value;
     };
 
 

@@ -53,6 +53,6 @@ mixin type_select(field, attr)
       //- Handle object types
       - if (typeof value === 'object')
         //- Get first value from object
-        option(value=Object.keys(value)[0])= __(value[Object.keys(value)[0]])
+        option(value=value.value, selected=(field.value === value.value))= __(value.name)
       - else
-        option(value=value)= __(value)
+        option(value=value, selected=field.value === value)= __(value)

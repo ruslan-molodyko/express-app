@@ -41,5 +41,6 @@ signupValue:
   email: molodyko13@gmail.com
   name: Ruslan
   lastName: Molodyko
+  gender: two
   password1: 123456
   password2: 123456
