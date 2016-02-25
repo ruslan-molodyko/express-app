@@ -14,12 +14,14 @@ module.exports = ABone.create(function () {
 
     /**
      * Init class
-     * @param data
+     * @param {Object} config Schema of form
+     * @param {String} formName Form name
+     * @param {Object} data Form data
      */
-    this.constructor = function (data, formName) {
+    this.constructor = function (config, formName, data) {
 
         // Check argument
-        if (data == null) {
+        if (config == null) {
             throw new Error('Arguments is not valid');
         }
 
@@ -32,9 +34,10 @@ module.exports = ABone.create(function () {
         this.defaultType = 'text';
 
         // Set data
-        this.data = data;
+        this.fieldValues = data;
+        this.config = config;
         this.formName = formName;
-        this.form = new FormType(this.data, formName);
+        this.form = new FormType(this.config, formName);
         this.field = {};
 
         // Prepare class
@@ -49,12 +52,12 @@ module.exports = ABone.create(function () {
         var newFieldObject = {}, key, fieldName, firstKey, fieldObject, field, fieldType, Type;
 
         // Check if fields is exists
-        if (this.data.field !== undefined && this.data.field != null) {
+        if (this.config.field !== undefined && this.config.field != null) {
 
             // If fields passed as array
-            if (Array.isArray(this.data.field)) {
-                for (key in this.data.field) {
-                    fieldName = this.data.field[key];
+            if (Array.isArray(this.config.field)) {
+                for (key in this.config.field) {
+                    fieldName = this.config.field[key];
 
                     // The key is number but value is field name
                     if (typeof fieldName === 'string') {
@@ -63,7 +66,7 @@ module.exports = ABone.create(function () {
                         // Object into array, get his name value name property in this case must be required
                     } else if (
                         typeof fieldName === 'object' &&
-                        Array.isArray(this.data.field) &&
+                        Array.isArray(this.config.field) &&
                         typeof fieldName.name === 'string' &&
                         fieldName.name.length > 0
                     ) {
@@ -86,14 +89,14 @@ module.exports = ABone.create(function () {
                 }
 
                 // Save new prepared object
-                this.data.field = newFieldObject;
+                this.config.field = newFieldObject;
             }
 
             // Iterate all fields and set instances of their type
-            for (key in this.data.field) {
+            for (key in this.config.field) {
 
                 // Get field
-                field = this.data.field[key];
+                field = this.config.field[key];
 
                 // Get field type
                 fieldType = field.type || this.defaultType;
@@ -103,6 +106,11 @@ module.exports = ABone.create(function () {
 
                 // Save instances
                 this.field[key] = new Type(this, key);
+
+                // Set value to field if exists
+                if (typeof this.fieldValues === 'object' && this.fieldValues[key] !== undefined) {
+                    this.field[key].setValue(this.fieldValues[key]);
+                }
             }
         }
     };

@@ -35,6 +35,7 @@ module.exports = ABone.create(function () {
     this.setValue = function (value) {
 
         this.value = value;
+        this.result.value = value;
 
         // Set value to attributes of input
         this.result.attr.value = value;
@@ -57,7 +58,7 @@ module.exports = ABone.create(function () {
         this.result.attr.name = this.result.attr.name || this.result.name;
 
         // Wrap name as array by form name
-        if (this.form.data.fieldNameAsArray === true) {
+        if (this.form.config.fieldNameAsArray === true) {
             this.result.attr.name = this.formName + '[' + this.result.attr.name + ']';
         }
     };

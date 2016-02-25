@@ -1,0 +1,22 @@
+formCase1:
+  login:
+    field:
+      - email
+      - name
+      - lastName
+      - password1
+      -
+          type: text
+          name: password2
+      - submit:
+          type: text
+
+valueCase1:
+  login:
+    email: molodyko13@gmail.com
+    name: Ruslan
+    lastName: Molodyko
+    password1: 123456
+    password2: 123456
+
+
