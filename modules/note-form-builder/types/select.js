@@ -3,6 +3,7 @@
  */
 var ABone = require('abone'),
     path = require('path'),
+    TextType = require(path.join(__dirname, 'text')),
     Fields = require(path.join(__dirname, 'fields'));
 
 /**
@@ -45,20 +46,6 @@ module.exports = ABone.create(function () {
     this._type = function (field) {
 
         this.result.type = field;
-    };
-
-    /**
-     * Handle field
-     * @param field
-     */
-    this._options = function (field) {
-
-        // Check and set default value
-        if (field === undefined) {
-            this.result.options = [];
-        } else {
-            this.result.options = this.formatOptions(field);
-        }
     };
 
     /**
@@ -131,57 +118,18 @@ module.exports = ABone.create(function () {
      * Handle field
      * @param field
      */
-    this._name = function (field) {
-
-        // Check and set default value
-        if (field === undefined) {
-            this.result.name = this.fieldName;
-        } else {
-            this.result.name = field;
-        }
-
-        // Set name as attribute of html tag
-        this.result.attr.name = this.result.attr.name || this.result.name;
-
-        // Wrap name as array by form name
-        if (this.form.data.fieldNameAsArray === true) {
-            this.result.attr.name = this.formName + '[' + this.result.attr.name + ']';
-        }
-    };
+    this._name = TextType.prototype._name;
 
     /**
      * Handle field
      * @param field
      */
-    this._attr = function (field) {
-
-        // Check and set default value
-        if (field === undefined) {
-            this.result.attr = {
-                id: this.tagId
-            };
-        } else {
-            this.result.attr = field;
-
-            // Set id to attr array
-            if (field.id === undefined) {
-                this.result.attr.id = this.tagId;
-            }
-        }
-    };
+    this._attr = TextType.prototype._attr;
 
     /**
      * Handle field
      * @param field
      */
-    this._label = function (field) {
-
-        // Check and set default value
-        if (field === undefined) {
-            this.result.label = this.fieldName;
-        } else {
-            this.result.label = field;
-        }
-    };
+    this._label = TextType.prototype._label;
 
 }, Fields);

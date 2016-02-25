@@ -19,6 +19,7 @@ describe('Type#text', function () {
         var textType = new Form(config.case1.login, 'login');
         expect(textType.field.name.getData()).to.be.eql({
             "attr": {
+                "id": "login-name-field",
                 "name": "login-form-name",
                 "type": "text",
                 "style": {
@@ -34,6 +35,7 @@ describe('Type#text', function () {
         var textType = new Form(config.case2.login, 'login');
         expect(textType.field.name.getData()).to.be.eql({
             "attr": {
+                "id": "login-name-field",
                 "name": "login[login-form-name]",
                 "type": "text",
                 "style": {
@@ -49,6 +51,7 @@ describe('Type#text', function () {
         var textType = new Form(config.case3.login, 'login');
         expect(textType.field.name.getData()).to.be.eql({
             "attr": {
+                "id": "login-name-field",
                 "name": "login[name]",
                 "type": "text"
             },
@@ -61,6 +64,7 @@ describe('Type#text', function () {
         var textType = new Form(config.case4.login, 'login');
         expect(textType.field.name.getData()).to.be.eql({
             "attr": {
+                "id": "login-name-field",
                 "name": "login[name]",
                 "type": "text"
             },

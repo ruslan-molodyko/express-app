@@ -20,6 +20,7 @@ describe('Type#select', function () {
         expect(type.field.someField.getData()).to.be.eql({
             "type": "select",
             "attr": {
+                "id": "login-someField-field",
                 "name": "someName"
             },
             "label": "someField",
@@ -45,6 +46,7 @@ describe('Type#select', function () {
         expect(type.field.selectField.getData()).to.be.eql({
             "type": "select",
             "attr": {
+                "id": "login-selectField-field",
                 "name": "login[selectField]"
             },
             "label": "selectField",
@@ -70,6 +72,7 @@ describe('Type#select', function () {
         expect(type.field.selectField.getData()).to.be.eql({
             "type": "select",
             "attr": {
+                "id": "login-selectField-field",
                 "name": "selectField"
             },
             "label": "selectField",
@@ -82,6 +85,7 @@ describe('Type#select', function () {
         expect(type.field.selectField.getData()).to.be.eql({
             "type": "select",
             "attr": {
+                "id": "login-selectField-field",
                 "name": "selectField"
             },
             "label": "selectField",
@@ -107,6 +111,7 @@ describe('Type#select', function () {
         expect(type.field.selectField.getData()).to.be.eql({
             "type": "select",
             "attr": {
+                "id": "login-selectField-field",
                 "name": "selectField"
             },
             "label": "selectField",
@@ -132,6 +137,7 @@ describe('Type#select', function () {
         expect(type.field.selectField.getData()).to.be.eql({
             "type": "select",
             "attr": {
+                "id": "login-selectField-field",
                 "name": "selectField",
                 "style": {
                     "margin-top": "0px"

@@ -19,6 +19,7 @@ describe('Type#button', function () {
         var buttonType = new Form(config.case1.login, 'login');
         expect(buttonType.field.someField.getData()).to.be.eql({
             "attr": {
+                "id": "login-someField-field",
                 "type": "submit"
             },
             "label": "someField",
@@ -29,6 +30,7 @@ describe('Type#button', function () {
         var buttonType = new Form(config.case2.login, 'login');
         expect(buttonType.field.name.getData()).to.be.eql({
             "attr": {
+                "id": "login-name-field",
                 "style": {
                     "margin": 0
                 },
@@ -42,6 +44,7 @@ describe('Type#button', function () {
         var buttonType = new Form(config.case3.login, 'login');
         expect(buttonType.field.name.getData()).to.be.eql({
             "attr": {
+                "id": "login-name-field",
                 "type": "submit"
             },
             "label": "custom-label",

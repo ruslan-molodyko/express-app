@@ -3,6 +3,7 @@
  */
 var ABone = require('abone'),
     path = require('path'),
+    TextType = require(path.join(__dirname, 'text')),
     Fields = require(path.join(__dirname, 'fields'));
 
 /**
@@ -51,29 +52,13 @@ module.exports = ABone.create(function () {
      * Handle field
      * @param field
      */
-    this._attr = function (field) {
-
-        // Check and set default value
-        if (field === undefined) {
-            this.result.attr = {};
-        } else {
-            this.result.attr = field;
-        }
-    };
+    this._attr = TextType.prototype._attr;
 
     /**
      * Handle field
      * @param field
      */
-    this._label = function (field) {
-
-        // Check and set default value
-        if (field === undefined) {
-            this.result.label = this.fieldName;
-        } else {
-            this.result.label = field;
-        }
-    };
+    this._label = TextType.prototype._label;
 
 }, Fields);
 

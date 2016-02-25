@@ -39,6 +39,7 @@ describe('Form#initialization', function () {
             "field": {
                 "email": {
                     "attr": {
+                        "id": "login-email-field",
                         "name": "email",
                         "type": "text"
                     },
@@ -48,6 +49,7 @@ describe('Form#initialization', function () {
                 },
                 "lastName": {
                     "attr": {
+                        "id": "login-lastName-field",
                         "name": "lastName",
                         "type": "text"
                     },
@@ -57,6 +59,7 @@ describe('Form#initialization', function () {
                 },
                 "name": {
                     "attr": {
+                        "id": "login-name-field",
                         "name": "name",
                         "type": "text"
                     },
@@ -66,6 +69,7 @@ describe('Form#initialization', function () {
                 },
                 "password1": {
                     "attr": {
+                        "id": "login-password1-field",
                         "name": "password1",
                         "type": "text"
                     },
@@ -75,6 +79,7 @@ describe('Form#initialization', function () {
                 },
                 "password2": {
                     "attr": {
+                        "id": "login-password2-field",
                         "name": "password2",
                         "type": "text"
                     },
@@ -84,6 +89,7 @@ describe('Form#initialization', function () {
                 },
                 "submit": {
                     "attr": {
+                        "id": "login-submit-field",
                         "name": "submit",
                         "type": "text"
                     },
@@ -106,6 +112,7 @@ describe('Form#initialization', function () {
             "field": {
                 "age": {
                     "attr": {
+                        "id": "login-age-field",
                         "name": "age",
                         "type": "text"
                     },
@@ -115,6 +122,7 @@ describe('Form#initialization', function () {
                 },
                 "email": {
                     "attr": {
+                        "id": "login-email-field",
                         "name": "login-email",
                         "type": "text"
                     },
@@ -125,6 +133,7 @@ describe('Form#initialization', function () {
                 "gender": {
                     "type": "select",
                     "attr": {
+                        "id": "login-gender-field",
                         "name": "gender"
                     },
                     "label": "gender",
@@ -142,6 +151,7 @@ describe('Form#initialization', function () {
                 },
                 "lastName": {
                     "attr": {
+                        "id": "login-lastName-field",
                         "name": "lastName",
                         "type": "text"
                     },
@@ -151,6 +161,7 @@ describe('Form#initialization', function () {
                 },
                 "name": {
                     "attr": {
+                        "id": "login-name-field",
                         "name": "name",
                         "type": "text"
                     },
@@ -160,6 +171,7 @@ describe('Form#initialization', function () {
                 },
                 "password1": {
                     "attr": {
+                        "id": "login-password1-field",
                         "name": "password1",
                         "type": "text"
                     },
@@ -169,6 +181,7 @@ describe('Form#initialization', function () {
                 },
                 "password2": {
                     "attr": {
+                        "id": "login-password2-field",
                         "name": "password2",
                         "type": "text"
                     },
@@ -178,6 +191,7 @@ describe('Form#initialization', function () {
                 },
                 "submit": {
                     "attr": {
+                        "id": "login-submit-field",
                         "type": "submit"
                     },
                     "label": "submit",
@@ -187,5 +201,11 @@ describe('Form#initialization', function () {
             "fieldNameAsArray": false,
             "name": "login"
         });
+    });
+    it('Case 3, the same field names', function () {
+        expect(function () {
+            var data = new Form(config.case3.login, 'login');
+            data.getForm();
+        }).to.be.throws(/already used/);
     });
 });

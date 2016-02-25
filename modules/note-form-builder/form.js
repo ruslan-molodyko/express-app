@@ -58,7 +58,8 @@ module.exports = ABone.create(function () {
 
                     // The key is number but value is field name
                     if (typeof fieldName === 'string') {
-                        newFieldObject[fieldName] = {};
+                        this._addFieldToLocalObject(newFieldObject, fieldName, {});
+
                         // Object into array, get his name value name property in this case must be required
                     } else if (
                         typeof fieldName === 'object' &&
@@ -66,7 +67,7 @@ module.exports = ABone.create(function () {
                         typeof fieldName.name === 'string' &&
                         fieldName.name.length > 0
                     ) {
-                        newFieldObject[fieldName.name] = fieldName;
+                        this._addFieldToLocalObject(newFieldObject, fieldName.name, fieldName);
 
                         // If key is number but first inner key is string then this key is field name
                     } else if (typeof this.getObjectFirstKey(fieldName) === 'string') {
@@ -74,7 +75,7 @@ module.exports = ABone.create(function () {
                         firstKey = this.getObjectFirstKey(fieldName);
                         fieldObject = fieldName[firstKey];
 
-                        newFieldObject[firstKey] = fieldObject;
+                        this._addFieldToLocalObject(newFieldObject, firstKey, fieldObject);
 
                         // Wrong object
                     } else {
@@ -103,6 +104,22 @@ module.exports = ABone.create(function () {
                 // Save instances
                 this.field[key] = new Type(this, key);
             }
+        }
+    };
+
+    /**
+     * Check if fields not the same names
+     *
+     * @param object
+     * @param name
+     * @param value
+     * @private
+     */
+    this._addFieldToLocalObject = function (object, name, value) {
+        if (typeof object === 'object' && object[name] === undefined) {
+            object[name] = value;
+        } else {
+            throw new Error('Such field name [' + name + '] already used');
         }
     };
 

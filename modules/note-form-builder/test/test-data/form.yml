@@ -40,3 +40,9 @@ case2:
       - password2
       - submit:
           type: button
+
+case3:
+  login:
+    field:
+      - email
+      - email
