@@ -45,6 +45,11 @@ ___Useful___
 2. [WebStorm hot key](http://glide.name/2012/06/php-ide-phpstorm-tips-and-tricks/)
 3. http://usejsdoc.org/
 
+__Promises___
+
+1. https://habrahabr.ru/post/209662/
+2. https://learn.javascript.ru/promise
+
 ```
 _mocha C:\node\app\modules\note-form-builder\test --require blanket --reporter html-cov > public/coverage.html 
 ```
