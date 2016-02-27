@@ -38,7 +38,8 @@ module.exports = function(app, config, baseDir) {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(cookieParser());
-    app.use(express.static(path.join(baseDir ,'public')));
+    app.use(express.static(path.join(baseDir, 'public')));
+    app.use(express.static(path.join(baseDir, 'bower_components')));
 
     // Session and passport setup
     app.use(session({cookie: {maxAge: 60000}, secret: config.app.secretKey}));
