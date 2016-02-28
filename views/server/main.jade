@@ -1,5 +1,16 @@
 extends layout
 
+block script
+  script
+    :coffee-script
+      requirejs.config
+        baseUrl: "/"
+        paths:
+          app: "server"
+          jquery: "jquery/dist/jquery"
+
+      require ["app/index"]
+
 block style
   style
     :stylus
