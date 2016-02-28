@@ -1,0 +1,4 @@
+client-bootstrap:
+  runModule: __controller/main/index
+  requiredModules:
+    jquery: jquery/dist/jquery

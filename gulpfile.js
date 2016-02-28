@@ -6,6 +6,7 @@
 var gulp = require('gulp'),
     fs = require('fs'),
     path = require('path'),
+    BootstrapGenerator = require(path.join(__dirname, 'lib', 'generator', 'client-bootstrap')),
     exec = require('child_process').exec,
     spawn = require('child_process').spawn,
     concat = require('gulp-concat'),
@@ -18,7 +19,39 @@ var gulp = require('gulp'),
         typeSources: ['controller', 'unit'],
         clientDirectory: 'public',
         compiledFileName: 'index.js',
-        bootstrapFileName: 'bootstrap.js'
+        bootstrapFileName: 'bootstrap.js',
+        configFileName: 'config.yaml',
+        configKey: 'client-bootstrap',
+
+        /**
+         * Get code of client bootstrap file
+         *
+         * @param moduleName
+         * @param pathToModule
+         * @returns {string}
+         */
+        generateBootstrap: function (moduleName, pathToModule) {
+            var fileConfig = BootstrapGenerator.getConfigFromYmlFile(path.join(pathToModule, app.configFileName)),
+                config,
+                generator;
+
+            // Check if config is exists
+            if (typeof fileConfig === 'object' && fileConfig[app.configKey] != null) {
+                config = fileConfig[app.configKey];
+            }
+
+            // Extend config
+            config = Object.assign({
+                moduleTypes: app.typeSources,
+                moduleName: moduleName
+            }, config);
+
+            // Create generator
+            generator = new BootstrapGenerator(config);
+
+            // Get code
+            return generator.getRequireJsCode();
+        }
     };
 
 /**
@@ -43,7 +76,7 @@ gulp.task('restart-server', function () {
 gulp.task('concat-js', function () {
 
     // Get all modules name
-    var modules = fs.readdirSync(app.pathToApp), pathToModule, pathToType, targetPath, srcPath;
+    var modules = fs.readdirSync(app.pathToApp), pathToModule, pathToType, targetPath, srcPath, generator, config;
 
     // Iterate module names
     modules.forEach(function (moduleName) {
@@ -67,25 +100,11 @@ gulp.task('concat-js', function () {
             // Save bootstrap file
             fs.writeFile(
                 path.join(app.targetPublicDirectory, moduleName, app.bootstrapFileName),
-                generateBootstrap(moduleName)
+                app.generateBootstrap(moduleName, pathToModule)
             );
         });
     });
 });
-
-function generateBootstrap(moduleName) {
-
-    var code = 'requirejs.config({\n' +
-                    '\tbaseUrl: "/",\n' +
-                    '\tpaths: {\n' +
-                        '\t\t__app: "/app",\n' +
-                        '\t\t__module: "/app/' + moduleName + '",\n' +
-                        '\t\t__controller: "/app/' + moduleName + '/controller",\n' +
-                        '\t\t__unit: "/app/' + moduleName + '/unit"\n' +
-                    '\t}\n' +
-                '});';
-    return code;
-}
 
 /**
  * Watch all javascript files
