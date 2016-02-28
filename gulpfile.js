@@ -6,7 +6,7 @@
 var gulp = require('gulp'),
     fs = require('fs'),
     path = require('path'),
-    BootstrapGenerator = require(path.join(__dirname, 'lib', 'generator', 'client-bootstrap')),
+    BootstrapGenerator = require(path.join(__dirname, 'framework', 'generator', 'client-bootstrap')),
     exec = require('child_process').exec,
     spawn = require('child_process').spawn,
     concat = require('gulp-concat'),
@@ -110,7 +110,8 @@ gulp.task('concat-js', function () {
  * Watch all javascript files
  */
 gulp.task('watch', ['concat-js', 'restart-server'], function () {
-    gulp.watch(app.pathToApp + '/**/*.js', ['concat-js']);
+    gulp.watch(app.pathToApp + '/**/*.js', ['concat-js', 'restart-server']);
+    gulp.watch('framework' + '/**/*.js', ['concat-js', 'restart-server']);
 });
 
 /**
