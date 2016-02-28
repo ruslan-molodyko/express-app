@@ -45,6 +45,7 @@ ___Useful___
 2. [WebStorm hot key](http://glide.name/2012/06/php-ide-phpstorm-tips-and-tricks/)
 3. http://usejsdoc.org/
 4. https://github.com/requirejs/example-jquery-shim
+5. http://requirejs.org/
 
 __Promises___
 
