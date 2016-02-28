@@ -13,7 +13,7 @@ var express = require('express'),
  * Init middleware
  */
 sc.requireMiddleware('app-init')(app, config, __dirname);
-require(path.join(__dirname, 'server', 'module', 'main', 'index.js'))(app);
+require(path.join(__dirname, 'app', 'app-module', 'controller', 'main', 'index'))(app);
 sc.requireMiddleware('security')(app);
 sc.requireMiddleware('i18n')(app, config, routes);
 sc.requireMiddleware('e404')(app);

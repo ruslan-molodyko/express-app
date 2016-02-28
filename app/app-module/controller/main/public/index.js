@@ -3,8 +3,7 @@
  */
 "use strict";
 
-define('firstModule', ["jquery"], function ($) {
-    $(function () {
-        alert('hello from first module');
-    });
+define(["jquery"], function ($) {
+    alert('hello from first module');
+    return '333';
 });

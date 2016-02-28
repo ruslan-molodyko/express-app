@@ -11,13 +11,14 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     node,
     app = {
-        endpoint: path.join(__dirname, 'app.js'),
+        endpoint: 'bin/www',
         pathToApp: path.join(__dirname, 'app'),
         sourcePublicScript: path.join(__dirname, 'app/**/public/**/*.js'),
         targetPublicDirectory: path.join(__dirname, 'public/app'),
         typeSources: ['controller', 'unit'],
         clientDirectory: 'public',
-        compiledFileName: 'index.js'
+        compiledFileName: 'index.js',
+        bootstrapFileName: 'bootstrap.js'
     };
 
 /**
@@ -59,18 +60,38 @@ gulp.task('concat-js', function () {
 
                 // Concat all javascript into one file and move it to public directory
                 gulp.src(srcPath)
-                    .pipe(concat(app.compiledFileName))
+                    //.pipe(concat(app.compiledFileName))
                     .pipe(gulp.dest(targetPath));
             });
+
+            // Save bootstrap file
+            fs.writeFile(
+                path.join(app.targetPublicDirectory, moduleName, app.bootstrapFileName),
+                generateBootstrap(moduleName)
+            );
         });
     });
 });
+
+function generateBootstrap(moduleName) {
+
+    var code = 'requirejs.config({\n' +
+                    '\tbaseUrl: "/",\n' +
+                    '\tpaths: {\n' +
+                        '\t\t__app: "/app",\n' +
+                        '\t\t__module: "/app/' + moduleName + '",\n' +
+                        '\t\t__controller: "/app/' + moduleName + '/controller",\n' +
+                        '\t\t__unit: "/app/' + moduleName + '/unit"\n' +
+                    '\t}\n' +
+                '});';
+    return code;
+}
 
 /**
  * Watch all javascript files
  */
 gulp.task('watch', ['concat-js', 'restart-server'], function () {
-    gulp.watch(app.targetPublicDirectory, ['concat-js']);
+    gulp.watch(app.pathToApp + '/**/*.js', ['concat-js']);
 });
 
 /**

@@ -1,15 +1,12 @@
 extends layout
 
 block script
+  script(src='app/app-module/bootstrap.js')
   script
     :coffee-script
-      requirejs.config
-        baseUrl: "/"
-        paths:
-          app: "server"
-          jquery: "jquery/dist/jquery"
+      require ["__controller/main/index"], (main)=>
+        console.log main
 
-      require ["app/index"]
 
 block style
   style
