@@ -47,6 +47,7 @@ ___Useful___
 4. https://github.com/requirejs/example-jquery-shim
 5. http://requirejs.org/
 6. http://requirejs.org/docs/commonjs.html
+7. https://habrahabr.ru/post/232851/
 
 __Promises___
 
