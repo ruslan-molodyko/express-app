@@ -50,6 +50,9 @@ ___Useful___
 7. https://habrahabr.ru/post/232851/
 8. http://frontender.info/MindBEMding/
 9. https://ru.bem.info/method/
+10. [WebComponents]https://habrahabr.ru/post/210130/
+11. http://frontender.info/gulp-browserify-starter-faq/
+12. [browserify](https://habrahabr.ru/post/224825/)
 
 __Promises___
 
