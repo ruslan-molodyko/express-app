@@ -48,6 +48,8 @@ ___Useful___
 5. http://requirejs.org/
 6. http://requirejs.org/docs/commonjs.html
 7. https://habrahabr.ru/post/232851/
+8. http://frontender.info/MindBEMding/
+9. https://ru.bem.info/method/
 
 __Promises___
 
