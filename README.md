@@ -54,6 +54,7 @@ ___Useful___
 11. [WebComponents practical](https://habrahabr.ru/post/210058/)
 12. http://frontender.info/gulp-browserify-starter-faq/
 13. [browserify](https://habrahabr.ru/post/224825/)
+14. https://www.polymer-project.org/1.0/
 
 
 __Promises___
