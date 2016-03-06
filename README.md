@@ -55,6 +55,7 @@ ___Useful___
 12. http://frontender.info/gulp-browserify-starter-faq/
 13. [browserify](https://habrahabr.ru/post/224825/)
 14. https://www.polymer-project.org/1.0/
+15. https://habrahabr.ru/post/242379/
 
 
 __Promises___
